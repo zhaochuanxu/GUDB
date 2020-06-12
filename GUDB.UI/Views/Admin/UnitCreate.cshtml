@@ -1,0 +1,201 @@
+﻿
+@model GUDB.Model.Unit
+
+@{
+    ViewBag.Title = " 创建";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            你正在创建地质调查单位 @Html.DisplayFor(model => model.UName) 信息
+        </div>
+
+
+
+
+
+
+        <table class="table table-hover">
+
+            <tbody>
+
+
+                <!--UID-->
+                <tr>
+                    <td>
+                        单位ID
+
+                    </td>
+
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UId ">修改信息</a></td>*@
+
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UId, new { htmlAttributes = new { @class = "form-control", @id = "i8"  , placeholder = "唯一标识，后期不可修改" } })
+
+
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+                <!--UName-->
+                <tr>
+                    <td>
+
+                        单位名称
+                    </td>
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UName, new { htmlAttributes = new { @class = "form-control", @id = "i2" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!--UP  a  s-->
+
+                <tr>
+                    <td>
+                        单位地址
+                    </td>
+
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UAddress, new { htmlAttributes = new { @class = "form-control", @id = "i8" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <!--UPhone-->
+
+                <tr>
+                    <td>
+                        单位邮编
+
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UEmail, new { htmlAttributes = new { @class = "form-control", @id = "i3" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+                <tr>
+                    <td>单位性质
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UProperty, new { htmlAttributes = new { @class = "form-control", @id = "i4" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+
+
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("返回列表", "UnitList")
+        |
+
+
+
+        <input type="submit" value="创建" class="btn btn-default" />
+
+    </div>
+
+
+}
+

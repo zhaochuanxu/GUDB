@@ -1,0 +1,135 @@
+﻿
+
+@using GUDB.Model;
+@using PagedList.Mvc
+@model PagedList.IPagedList<Investigator>
+
+
+
+@{
+    Layout = null;
+    ViewBag.Title = "InvestigatorList";
+}
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+        &times;
+    </button>
+    你正在查看调查单位：@ViewData["Name"] 调查人员
+</div>
+
+
+
+<br />
+
+<br />
+
+
+
+
+<table class="table">
+    <tr>
+
+        <th>身份证号</th>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>电子邮箱</th>
+
+
+
+
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.IId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPhone)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.IEmail)
+            </td>
+
+
+
+
+
+
+
+            <td>
+                @Html.ActionLink("修改", "UnitChange", new { id = item.IId }) |
+                @Html.ActionLink("查看", "UnitLook", new { id = item.IId }) |
+                @Html.ActionLink("删除", "UnitDelete", new { id = item.IId })
+                @Html.ActionLink("参与调查的事件", "UnitEvent", new { id = item.UId }) |
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div>
+    @*分页主要代码*@
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("UnitPerson", new { page }))
+</div>
+
+
+<p>
+    @Html.ActionLink("返回列表", "UnitList")
+
+</p>
+
+
+@*<script>
+        function SearchUser(i){
+
+            $(function () {
+                $key = $("#keyword").val();
+                $.ajax({
+                    type: 'get',
+                    url: 'UserList?Id=' + i + '&&type=' + $key,
+                    async: true,
+                    dataType: "html",//返回整合HTML
+                    success: function(data){
+                        $(function(){
+                            $("#allbody").html(data);
+                        });
+                    }
+                });
+
+
+            });
+        }
+    </script>*@
+
+
+
+
+

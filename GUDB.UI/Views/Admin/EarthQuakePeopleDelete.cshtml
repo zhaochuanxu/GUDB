@@ -1,0 +1,218 @@
+﻿@model GUDB.Model.DamagePeople
+
+@{
+    ViewBag.Title = "更改 ";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+<script>
+
+    $(function () {
+        $("#i1").hide();
+    }
+    );
+</script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            你正在删除伤亡人员 @Html.DisplayFor(model => model.DPName) 信息
+        </div>
+
+
+
+        <hr />
+        <table class="table table-hover">
+
+            <tbody>
+
+
+                <!--UID-->
+                <tr>
+                    <td>
+                        身份证号码
+
+                    </td>
+
+
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPId)
+                    </td>
+
+
+                </tr>
+
+
+
+                <!--UName-->
+                <tr>
+                    <td>
+                        姓名
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPName)
+                    </td>
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UName ">修改信息</a></td>*@
+
+
+                </tr>
+
+
+
+                <!--UP  a  s-->
+
+                <tr>
+                    <td>
+                        电话
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPPhone)
+                    </td>
+
+
+
+                </tr>
+
+
+
+                <!--UPhone-->
+
+                <tr>
+                    <td>
+                        电邮
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPEmail)
+                    </td>
+
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+                <tr>
+                    <td>
+                        其他联系方式
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPOtherConnect)
+                    </td>
+
+
+                </tr>
+
+
+
+
+                @Html.EditorFor(model => model.EId, new { htmlAttributes = new { @class = "form-control", id = "i5" } })
+
+                <tr>
+                    <td>
+                        所受伤害程度
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPLevel)
+                    </td>
+
+
+             
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>
+
+
+                <tr>
+                    <td>
+                        关联联系人姓名
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPReferPeopleName)
+                    </td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        关联联系人电话
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DPReferPeoplePhone)
+                    </td>
+
+
+
+
+                </tr>
+
+
+
+
+
+
+  </tbody>
+       
+        
+        </table>
+   </div>
+
+    <br />
+
+
+
+    <div class="form-actions no-color">
+        
+        @Html.ActionLink("返回列表", "EarthQuakeDetailPeopleList", new { id = ViewBag.Type })|
+
+        <input type="submit" value="删除" class="btn btn-default" />
+
+    </div>
+
+
+}

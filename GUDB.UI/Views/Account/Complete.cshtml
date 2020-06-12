@@ -1,0 +1,133 @@
+﻿
+@model GUDB.Model.User
+@{
+
+
+    ViewBag.Title = "个人信息";
+
+
+
+
+}
+    
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+    <script>
+    $(function () {
+        $("#e").hide();
+        $("#e3").hide();
+        $("#e2").hide();
+          
+        $("form").submit(function (e) {
+
+            if ($("#nm").val() == "" || $("#nm").val() == null) {
+                alert("真实姓名不能为空");  return false;
+
+            }
+            else {
+                if ($("#num").val() == "" || $("#num").val() == null) {
+                    alert("身份证号码不能为空"); return false;
+                }
+                else {
+                    alert("Submitted……");
+
+
+
+                }
+            }
+
+        });
+    });
+
+    </script>
+<h2>填写用户 @Html.DisplayFor(MODEL =>MODEL.UName)   详细信息</h2>
+
+@using (Html.BeginForm("Complete","Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="col-md-10">
+    @Html.EditorFor(model => model.UId, new { htmlAttributes = new { @class = "form-control", @id = "e" } })
+    @Html.EditorFor(model => model.UPassword, new { htmlAttributes = new { @class = "form-control", @id = "e3" } })
+
+    @Html.EditorFor(model => model.UName, new { htmlAttributes = new { @class = "form-control", @id = "e2" } })
+</div>
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+
+    <!--真实姓名-->
+    <div class="form-group">
+        @Html.Label("身份证号", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UIdNumber, new { htmlAttributes = new { @id = "num", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UIdNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--身份证号-->
+    <div class="form-group">
+        @Html.Label("真实姓名", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UIdName, new { htmlAttributes = new { @class = "form-control",@id="nm" } })
+            @Html.ValidationMessageFor(model => model.UIdName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <!--电话号码-->
+    <div class="form-group">
+        @Html.Label("电话", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UPhone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UPhone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <!--地址-->
+    <!--邮箱-->
+    <div class="form-group">
+        @Html.Label("邮箱", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UMail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UMail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label("其他联系方式", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UOtherConnect, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UOtherConnect, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="提交" class="btn btn-default" />
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("返回主页", "Index", "Home")
+
+</div>

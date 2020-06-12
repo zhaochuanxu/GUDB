@@ -1,0 +1,163 @@
+﻿@model GUDB.Model.User
+
+@{
+    ViewBag.Title = "UserLook";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+<div>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        你正在查看   @Html.DisplayFor(model => model.UName) 的信息
+    </div>
+
+
+
+    <hr />
+    <table class="table table-hover">
+      
+        <tbody>
+
+            <tr>
+                <td>
+                    用户ID
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UId)
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+                <td>
+
+                    用户名
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UName)
+                </td>
+
+
+
+
+            </tr>
+
+
+
+
+
+            <tr>
+                <td>
+                    密码
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UPassword)
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    电话
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UPhone)
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    电子邮箱
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UMail)
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    真实姓名
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UIdName)
+                </td>
+
+
+
+            </tr>
+
+
+            <!-- 倒塌建筑-居民楼-->
+            <tr>
+                <td>
+                    身份证号码
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UIdNumber)
+                </td>
+
+            </tr>
+
+
+            <!-- 倒塌建筑-办公楼-->
+            <tr>
+                <td>
+                    用户其它联系方式
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UOtherConnect)
+                </td>
+
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("返回列表", "UserList") |
+    @Html.ActionLink("修改", "UserChange", new { id = Model.UId })
+
+</p>
+

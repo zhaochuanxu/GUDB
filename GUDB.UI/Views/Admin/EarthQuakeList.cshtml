@@ -1,0 +1,286 @@
+﻿
+
+@using GUDB.Model;
+@using PagedList.Mvc
+@model PagedList.IPagedList<Event>
+
+
+
+
+@{
+    Layout = null;
+    ViewBag.Title = "Eventist";
+}
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/min.js"></script>   <!--需要  翻 -->
+@*<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>*@
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+        &times;
+    </button>
+    你正在查看所有 @ViewBag.TName 事件
+</div>
+
+<div>
+    <div class="col-md-4 column"></div>
+
+    <div class="col-md-4 column"></div>
+    <div class="col-md-4 column"></div>
+
+    <div class="col-md-4 column">
+
+        <form class="navbar-form navbar-left" role="search">
+
+            <div class="form-group">
+                <input type="text" id="keyword" class="form-control" placeholder="输入" />
+
+
+                <div class="btn-group-vertical">
+                    <div class="btn-group-vertical">
+                        <button type="button" onclick="Get()" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            搜索
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+
+                            <li><a id="a0">ID</a></li>
+                            <li>
+                                <a id="a1">
+                                    时间
+                                </a>
+                            </li>
+                            <li>
+                                <a id="a2">
+                                    纬度
+                                </a>
+                            </li>
+                            <li>
+                                <a id="a3">
+                                    经度
+                                </a>
+                            </li>
+                            <li>
+                                <a id="a4">
+                                    位置
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a id="a8">
+                                    震级
+                                </a>
+                            </li>
+                            <li>
+                                <a id="a5">
+                                    影响范围
+                                </a>
+                            </li>
+
+                            <li>
+                                <a id="a6">
+                                    损失概况
+                                </a>
+                            </li>
+                            <li>
+                                <a id="a7">
+                                    地质构造特点
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+
+
+
+</div>
+
+
+<br />
+
+<br />
+@*<script>
+        function show() {
+            $(function () {
+                if ($("#limit").text().length > 2) { alert("   ") }
+            })
+        }
+    </script>
+    <div id="limit">打法打法打法打法打法打法打法打法打法</div><a href="javascript:void(0)" onclick="show()"></a>*@
+
+@*<div id="limittext">打法打法打法打法打法打法打法打法打法</div>*@
+
+
+
+<table class="table">
+    <tr>
+
+        <th>ID</th>
+        <th>时间</th>
+        <th>纬度</th>
+        <th>经度</th>
+        <th>位置</th>
+        <th>等级</th>
+        <th>影响范围</th>
+        <th>损失概况</th>
+        <th>地质构造特点</th>
+
+
+
+
+
+        <th></th>
+    </tr>
+    @{ 
+        int i = 0;
+        int j = 10;
+        foreach (var item in Model)
+        {
+
+        <tr>
+
+            <td>
+
+
+                @Html.DisplayFor(modelItem => item.EId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ETime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ELat)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ELong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ELocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Elevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ERange)
+            </td>
+            <td>
+               <div id="@j">     @Html.DisplayFor(modelItem => item.EDamageDes)   </div>
+            </td>
+
+
+            <td>
+                <div id="@i">      @*<div id="@i" >*@  @Html.DisplayFor(modelItem => item.EEarthDes) </div>
+            </td>
+
+
+
+
+
+            <td>
+                @Html.ActionLink("修改", "EarthQuakeChange", new { id = item.EId }) |
+                @Html.ActionLink("查看", "EarthQuakeLook", new { id = item.EId }) |
+                @Html.ActionLink("删除", "EarthQuakeDelete", new { id = item.EId })|
+                @Html.ActionLink("人员伤亡", "EarthQuakeDetailPeopleList", new { id = item.EId })|
+                @Html.ActionLink("建筑损失", "EarthQuakeDetailBuildingList", new { id = item.EId })|
+                @Html.ActionLink("其他损失", "EarthQuakeDetailOtherList", new { id = item.EId })|
+
+            </td>
+        </tr>
+
+            i++;
+            j++;
+        }
+        }
+</table>
+
+
+<div>
+    @*分页主要代码*@
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("EarthQuakeList", new { page = page, tid = ViewBag.TId }))
+    @*@Html.PagedListPager(Model, page => Url.Action("EarthQuakeList", new { page=, tid = ViewBag.TId }))*@
+
+</div>
+
+<script type='text/javascript' src='~/Scripts/jquery.limittext.js'></script>
+<script type='text/javascript' src='~/Scripts//test.js'></script>
+<script src="~/Scripts/jquery.limittext.js"></script>
+<script src="~/Scripts/test.js"></script>
+@*<script type='text/javascript' src='jquery.limittext.js'></script>*@
+<script>
+        function Get() {
+            $(function () {
+ //               /alert($("#keyword").val());
+                $href = $("#keyword").val();
+
+                $idtype = @ViewData["TId"];
+                $('#a0').attr('href', 'EarthQuakeList?key=' + $href + '&&type=0&&tid=' + $idtype);
+                $('#a1').attr('href', 'EarthQuakeList?key=' + $href + '&&type=1&&tid=' + $idtype);
+                $('#a2').attr('href', 'EarthQuakeList?key=' + $href + '&&type=2&&tid=' + $idtype);
+                $('#a3').attr('href', 'EarthQuakeList?key=' + $href + '&&type=3&&tid=' + $idtype);
+                $('#a4').attr('href', 'EarthQuakeList?key=' + $href + '&&type=4&&tid=' + $idtype);
+                $('#a5').attr('href', 'EarthQuakeList?key=' + $href + '&&type=5&&tid=' + $idtype);
+                $('#a7').attr('href', 'EarthQuakeList?key=' + $href + '&&type=6&&tid=' + $idtype);
+                $('#a6').attr('href', 'EarthQuakeList?key=' + $href + '&&type=7&&tid=' + $idtype);
+
+
+                $('#a8').attr('href', 'EarthQuakeList?key=' + $href + '&&type=8&&tid=' + $idtype);
+
+
+/    ////        alert($('#a0').attr('href'))
+            });
+        }
+</script>
+
+@*<script>
+        function SearchUser(i){
+
+            $(function () {
+                $key = $("#keyword").val();
+                $.ajax({
+                    type: 'get',
+                    url: 'UserList?Id=' + i + '&&type=' + $key,
+                    async: true,
+                    dataType: "html",//返回整合HTML
+                    success: function(data){
+                        $(function(){
+                            $("#allbody").html(data);
+                        });
+                    }
+                });
+
+
+            });
+        }
+    </script>*@
+
+
+
+
+

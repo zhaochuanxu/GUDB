@@ -1,0 +1,378 @@
+﻿
+@model GUDB.Model.Investigator
+
+@{
+    ViewBag.Title = "更改 ";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+<script>
+
+    $(function () {
+        $("#i1").hide();
+        $("#i2").hide();
+        $("#i3").hide();
+        $("#i4").hide();
+        $("#i5").hide();
+        $("#i6").hide();
+
+        $("#i8").hide();
+        $("#i7").hide();
+
+    }
+    );
+</script>
+
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            你正在修改调查人员 @Html.DisplayFor(model => model.IName) 信息
+        </div>
+
+
+
+        <hr />
+        <table class="table table-hover">
+
+            <tbody>
+
+
+                <!--UID-->
+                <tr>
+                    <td>
+                        身份证号码
+
+                    </td>
+
+
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.IId)
+                    </td>
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UId ">修改信息</a></td>*@
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('.n1').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+
+                            <!--唯一标识-->
+                            <input class="form-control l1  n1" id="disabledInput " type="text" placeholder="禁止修改" disabled>
+
+
+                            @Html.EditorFor(model => model.IId, new { htmlAttributes = new { @class = "form-control", id = "i1" } })
+
+
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+                <!--UName-->
+                <tr>
+                    <td>
+
+                        姓名
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.IName)
+                    </td>
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UName ">修改信息</a></td>*@
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i2').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IName, new { htmlAttributes = new { @class = "form-control", @id = "i2" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!--UP  a  s-->
+
+                <tr>
+                    <td>
+                        电话
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.IPhone)
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i8').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IPhone, new { htmlAttributes = new { @class = "form-control", @id = "i8" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <!--UPhone-->
+
+                <tr>
+                    <td>
+                        邮箱
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.IEmail)
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i3').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IEmail, new { htmlAttributes = new { @class = "form-control", @id = "i3" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+                <tr>
+                    <td>
+                        其他联系方式
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.IOtherConnect)
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i4').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IOtherConnect, new { htmlAttributes = new { @class = "form-control", @id = "i4" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+      <!--          <tr>
+                    @*<td>
+                        所在单位
+                    </td>*@
+
+                    @*<td>
+
+                        @Html.DisplayFor(model => model.Unit.UName)
+                    </td>*@
+
+
+                    @*<td>
+                        <a onclick="show()">修改</a>
+                    </td>*@
+
+                    @*<td>
+
+
+                        <div class="col-lg-4">
+
+
+
+
+                            @Html.EditorFor(model => model.UId, new { htmlAttributes = new { @class = "form-control", @value = ViewBag.UID, @id = "unit" } })
+                            <div id="search"></div>
+
+
+                        </div>
+                    </td>*@
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>-->
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+
+
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("返回列表", "investigatorList")
+        |
+
+
+
+        <input type="submit" value="修改" class="btn btn-default" />
+
+    </div>
+
+
+}
+
+
+
+<script src="~/Content/Select/verSelect.2.0.js"></script>
+
+<script>
+
+    function show() {
+        var Unitdata;
+        var select = new verjs_select();
+        $.ajax({
+            type: 'get',
+            url: "Data",
+            dataType: "json",   //服务器响应的数据类型
+            success: function (data) {
+                //处理data
+                Unitdata = data;
+                //alert(Unitdata);
+                console.log(Unitdata)
+
+
+                var select = new verjs_select();
+                select.render({
+                    elem: "#search",
+                    //data: [{id: 1, name: "123456" }, {id: 2, name: "哈哈哈哈" }],
+                    data: JSON.parse(Unitdata),   //后台传
+                    // data: Unitdata,
+                    init_value: [1],
+                    checkbox: false,
+
+                });
+                //alert(JSON.parse(Unitdata));
+
+
+
+
+            },
+            error: console.log("加载中")
+        });
+
+
+
+
+
+
+
+    }
+
+
+
+
+</script>

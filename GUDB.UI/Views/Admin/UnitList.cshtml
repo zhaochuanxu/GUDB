@@ -1,0 +1,196 @@
+﻿
+
+@using GUDB.Model;
+@using PagedList.Mvc
+@model PagedList.IPagedList<Unit>
+
+
+
+@{
+    Layout = null;
+    ViewBag.Title = "UnitList";
+}
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+        &times;
+    </button>
+    你正在查看所有地质灾害调查单位
+</div>
+
+
+<div>
+    <div class="col-md-4 column"></div>
+
+    <div class="col-md-4 column"></div>
+    <div class="col-md-4 column"></div>
+
+    <div class="col-md-4 column">
+
+        <form class="navbar-form navbar-left" role="search">
+
+            <div class="form-group">
+                <input type="text" id="keyword" class="form-control" placeholder="输入" />
+
+
+                <div class="btn-group-vertical">
+                    <div class="btn-group-vertical">
+                        <button type="button" onclick="Get()" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            搜索
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a id="a0">单位ID</a></li>
+                            <li><a id="a1">单位名称</a></li>
+                            <li><a id="a2">单位地址</a></li>
+                            <li><a id="a3">单位邮编</a></li>
+
+                            <li><a id="a4">单位性质</a></li>
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+
+
+
+</div>
+
+
+<br />
+
+<br />
+
+
+
+
+<table class="table">
+    <tr>
+
+        <th>单位ID</th>
+        <th>单位名称</th>
+        <th>单位地址</th>
+        <th>单位邮编</th>
+        <th>单位性质</th>
+
+
+
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UAddress)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UProperty)
+            </td>
+
+
+
+
+
+
+            <td>
+                @Html.ActionLink("修改", "UnitChange", new { id = item.UId }) |
+                @Html.ActionLink("查看", "UnitLook", new { id = item.UId }) |
+                @Html.ActionLink("删除", "UnitDelete", new { id = item.UId })|@Html.ActionLink("单位人员", "UnitPerson", new { id = item.UId }) |
+                @Html.ActionLink("参与调查的事件", "UnitEvent", new { id = item.UId }) |
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div>
+    @*分页主要代码*@
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("UserList", new { page }))
+</div>
+
+<script>
+    function Get() {
+        $(function () {
+            //               /alert($("#keyword").val());
+            $href = $("#keyword").val();
+            $('#a0').attr('href', 'UnitList?key=' + $href + '&&type=0');
+            $('#a1').attr('href', 'UnitList?key=' + $href + '&&type=1');
+            $('#a2').attr('href', 'UnitList?key=' + $href + '&&type=2');
+            $('#a3').attr('href', 'UnitList?key=' + $href + '&&type=3');
+            $('#a4').attr('href', 'UnitList?key=' + $href + '&&type=4');
+
+
+
+            /    ////        alert($('#a0').attr('href'))
+        });
+    }
+</script>
+
+@*<script>
+        function SearchUser(i){
+
+            $(function () {
+                $key = $("#keyword").val();
+                $.ajax({
+                    type: 'get',
+                    url: 'UserList?Id=' + i + '&&type=' + $key,
+                    async: true,
+                    dataType: "html",//返回整合HTML
+                    success: function(data){
+                        $(function(){
+                            $("#allbody").html(data);
+                        });
+                    }
+                });
+
+
+            });
+        }
+    </script>*@
+
+
+
+
+

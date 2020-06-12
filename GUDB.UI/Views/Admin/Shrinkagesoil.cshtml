@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+<h3>
+    胀缩土事件 管理
+</h3>
+<div class="container">
+    <!-- 开加一个container的目的是为了让整体布局居中 -->
+
+    <br />
+    <br />
+    <br />
+
+    <!-- 开始 -->
+    <div class="row">
+
+        <!-- 第一张略缩图结束 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+            <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+            <div class="thumbnail">
+                <div class="caption">
+                    <a href="~/Admin/EarthQuakelist?tid=5"><h4>查看管理所有胀缩土事件</h4></a>
+                    <p style="color:blue;">
+                        在这里可以查看并搜索所有广西区内的胀缩土事件，并管理具体的数据
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+            <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+            <div class="thumbnail">
+                <div class="caption">
+                    <a href="~/Admin/EarthQuakeCreate?tid=5"><h4>创建事件</h4></a>
+                    <p style="color:blue;">
+                        在这里提交最近发生的胀缩土事件并更新到数据库中
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

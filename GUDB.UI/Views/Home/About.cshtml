@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GUDB.Model.User>
+
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>About</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UIdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOtherConnect)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UIdNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UIdName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UOtherConnect)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UIdNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UId })
+            </td>
+        </tr>
+    }
+
+</table>

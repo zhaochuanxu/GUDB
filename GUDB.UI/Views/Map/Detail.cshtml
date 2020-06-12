@@ -1,0 +1,321 @@
+﻿
+@{
+    ViewBag.Title = "EarthQuake";
+}
+
+<h2>@ViewBag.location</h2>
+
+
+<link href="~/Content/gxdzj/dizhen.css" rel="stylesheet" />
+
+
+<!-- <script type="text/javascript" src="/r/cms/www/default/js/jquery.SuperSlide.2.1.1.js"></script> -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2E41E533739e1bcc90d669a96a930b1c&services=&t=20170926125934"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+        var channelid = "";
+        channelid = "dt_74";
+        $("ul dt").each(function () {
+            if (channelid === "") {
+                return
+            } else if ($(this).attr("id") === channelid) {
+                $("#dt000").attr("class", "");
+                $(this).attr("class", "on");
+            }
+        });
+
+    });
+</script>
+
+<div class="mainbox">
+
+    <!--震情开始-->
+    <div class="zqxl">
+        <div class="title03">
+            地图展示
+        </div>
+
+        <div class="zqxl_box">
+            <div class="lf zqxl_l zqxl_con">
+
+                <!--这里用来显示地图-->
+                <div style="min-height: 550px; width: 100%;" id="map" class="hover"></div>
+
+                <!--地图处理Js-->
+
+                <script type="text/javascript">
+                    //例 :北京var long = 39.753073006482715;//纬度var lat = 116.45205964062498; //精度
+
+                    //获取精度纬度
+                    var lat = '@ViewBag.Lat';
+                    var long = '@ViewBag.Long';
+
+
+                    //alert(lat+"   "+long);
+
+                    //初始化地图
+                    var map = new BMap.Map("map");
+
+
+                    //map.centerAndZoom(new BMap.Point(108.629111, 23.742462), 10); //设定地图的中心点和坐标并将地图显示在地图容器中
+                    //地图初始化 代入（经度、 纬度）
+                    map.centerAndZoom(new BMap.Point(long,lat), 10); //设定地图的中心点和坐标并将地图显示在地图容器中
+                    map.enableScrollWheelZoom(true);
+                    var location = @ViewBag.Location;
+
+                    //设置点击区域内内容方框
+
+
+
+                    var opts = {
+                        width: 250,     // 信息窗口宽度
+                        height: 135,     // 信息窗口高度
+                        title: '[' + location + '震情]', // 信息窗口标题
+                        enableMessage: true//设置允许信息窗发送短息
+                    };
+
+                </script>
+            </div>
+
+
+
+            <!--右侧栏-->
+            <div class="rf zqxl_r">
+
+                <ul class="zqxl_tab">
+                    
+                    <li id="zqxl1" onClick="javascript: maker('@ViewBag.Lat,@ViewBag.Long, @ViewBag.Time, @ViewBag.Location, @ViewBag.Level,@ViewBag.Level')">
+                        <span>@ViewBag.Location</span>
+                        <p>强烈程度等级：@ViewBag.Level </p>
+                       
+
+                    </li>
+
+
+                    <li>
+                        <!----><a onclick="Detail_LevelD()" href="javascript:void(0)">地质灾害 @ViewData["DamageNameEvents"] 等级定义标准</a>
+                        <p style="color:red" id= "levelD"></p>
+
+                    </li>
+                    <!--位置-->
+                    <li>
+                        <a onclick="Detail_Loction()" href="javascript:void(0)">位置</a>
+                        <!--ajax获取地图位置-->
+                        <!--展示具体数据-->
+                        <span id="location"></span>
+                    </li>
+
+                    <!---->
+                    <li>
+                        <a onclick="Detail_Level()" href="javascript:void(0)">事件影响范围</a>
+                        <!--ajax获取地图位置-->
+                        <!--展示具体数据-->
+                        <span id="level"></span>
+                    </li>
+
+                    <!--损失概况-->
+                    <li>
+                        <a onclick="Detail_Damage()">损失情况</a>
+                        <!--ajax获取地图位置-->
+                        <!--展示具体数据-->
+                        <span id="damage_descible"></span>
+                    </li>
+
+                    <li>
+                        <a onclick="Detail()" href="javascript:void(0)">查看详细</a>
+                        <!--ajax获取地图位置-->
+                        <!--展示具体数据-->
+                        <span id="detail"></span>
+                    </li>
+
+
+                </ul>
+                <!---   <div class="page02"><a disabled="disabled">首页</a><a disabled="disabled">上一页</a><a href="#" onclick="location.href=encodeURI('index_2.jhtml');">下一页</a><a href="#" onclick="location.href=encodeURI('index_11.jhtml');">尾页</a>(共1/11页)</div>-->
+            </div>
+
+
+            <div class="cl"></div>
+        </div>
+    </div>
+    <!--震情开始结束-->
+</div>
+
+
+
+
+<!--获取地图位置
+    展示详细信息-->
+<script>
+    function Detail() {
+        $(function () {
+
+
+            //如果值不为空
+            if ($("#detail").text().replace($("#detail").children().text(), '') == "")
+            { $("#detail").text('@ViewBag.Detail');}
+            else {
+                $("#detail").empty();
+
+            }
+
+        }
+        );
+    }
+
+
+</script>
+
+
+<!--位置-->
+<script>
+    function Detail_Loction() {
+        $(function () {
+             //如果值不为空
+            if ($("#location").text().replace($("#location").children().text(), '') == "") {   $("#location").text('地点: ' + '@ViewData["Location"]    ' + '经度: ' + '@ViewBag.Long' + '(⁰)  纬度:' + '@ViewData["Lat"]' + "(⁰)");
+          }
+            else {
+                $("#location").empty();
+                //alert($("#level").text().replace($(".content").children().text(), ''));
+            }
+        }
+        );
+    }
+
+
+</script>
+
+
+<!--损失详细信息-->
+<script>
+    function Detail_Damage() {
+        $(function () {
+            if ($("#damage_descible").html().replace($("#damage_descible").children().text(), '') == "") {
+                $("#damage_descible").html('<a onclick="ClickToUrl(0)">损失概览</a> <br /><a onclick="ClickToUrl(1)">建筑损失详细</a><br /><a onclick="ClickToUrl(2)" > 伤亡人员详细名单</a ><br /><a onclick="ClickToUrl(3)" >其他损失</a> <br /><a onclick="ClickToUrl(4)" > 现场图片或视频列表</a>');
+
+            }
+            else {
+                $("#damage_descible").empty();
+            }
+        });
+    }
+</script>
+
+
+
+<script>
+    function Detail_Level() {
+        $(function () {
+
+            ////获取里边的值
+            //alert($("#level").text().replace($(".content").children().text(), ''));
+
+
+            //如果值不为空
+            if ($("#level").text().replace($("#level").children().text(), '') == "")
+            {
+                $("#level").text('事件影响范围:   ' +@ViewBag.Range + '(千米)');
+            }
+            else {
+                $("#level").empty();
+                //alert($("#level").text().replace($(".content").children().text(), ''));
+            }
+
+
+        });
+    }
+</script>
+
+
+
+
+<script>
+    //点击传入方法数值 显示在地图
+    function maker(the) {
+
+
+        map.clearOverlays(); //清除原始地图信息
+        //                        <img src="" />
+        var icon = new BMap.Icon('http://119.27.188.250:8080/Images/dxdzj/bg.gif', new BMap.Size(40, 40)); //设置指针位置大小
+
+
+
+
+        //console.log(the);
+        var pointX = the.split(',');  //处理话化对象  split() 方法用于把一个字符串分割成字符串数组。
+
+        //alert(pointX[1]);
+        //console.log(typeof (pointX)+pointX);
+
+
+        //纬度是第一个参数    纬度Point[0] 经度Point[1]  先给大的
+        var marker = new BMap.Marker(new BMap.Point(pointX[1], pointX[0]), { icon: icon }); // 创建标注
+
+
+        map.addOverlay(marker); // 将标注添加到地图中
+
+        
+        //将地图中心点重新设置一下(方法比较笨)
+        map.centerAndZoom(new BMap.Point(pointX[1], pointX[0]), 10);
+
+        var cont = "<p style='font-size:12px;lineheight:1.2em;'>发生时间：" + pointX[2] + "</br>发生位置：" + pointX[3] + "</br> 强烈程度：" + pointX[4] + "</br>影响范围：" + pointX[5] + "</br>经度：" + pointX[1] + "</br>纬度：" + pointX[0];
+        var infoWindow = new BMap.InfoWindow(cont, opts);  // 创建信息窗口对象
+        marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+    }
+</script>
+
+
+<script>
+    function ClickToUrl(type) {
+        if (type == 0) {
+            window.location.href = '@Url.Action("EarthQuakeDamage","Damage",new { id = ViewData["Id"]  })'
+        }
+        else if (type == 1) {
+             window.location.href = '@Url.Action("EarthQuakeDamageBuilding","Damage",new { id = ViewData["Id"]  })'
+
+        }
+
+        else if (type == 2) {
+            window.location.href = '@Url.Action("EarthQuakeDamagePeople","Damage",new { id = ViewData["Id"]  })'
+        }
+
+        else if (type == 4)
+        {
+             window.location.href = '@Url.Action("EarthQuakeDamageResource","Damage",new { id = ViewData["Id"]  })'
+
+        }
+        else {
+             window.location.href = '@Url.Action("EarthQuakeDamageOther","Damage",new { id = ViewData["Id"]  })'
+
+        }
+    }
+</script>
+
+
+
+<!--针对地质灾害事件等级写-->
+<script>
+    function Detail_LevelD() {
+        $(function () {
+
+            ////获取里边的值
+            //alert($("#level").text().replace($(".content").children().text(), ''));
+
+
+            //如果值不为空
+            if ($("#levelD").text().replace($("#levelD").children().text(), '') == "")
+            {
+                var contex = ' @ViewBag.DamageLevelDec';
+                $("#levelD").text(contex);
+            }
+            else {
+                $("#levelD").empty();
+                //alert($("#level").text().replace($(".content").children().text(), ''));
+            }
+
+
+        });
+    }
+</script>

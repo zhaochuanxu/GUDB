@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewBag.Title = "胀缩土数据";
+}
+
+
+<script src="~/Content/ceic/WdatePicker/WdatePicker.js"></script>
+<link href="~/Content/ceic/css/search.css" rel="stylesheet" />
+
+<script src="~/Content/ceic/js/Data.js"></script>
+
+<!--对于类型的传递-->
+<script>
+
+    $(function () { $("#type").hide(); });
+
+</script>
+
+
+<div class="EarthContent">
+    <div class="prop">
+       <h1>胀缩土数据查询</h1>
+        <div class="prop-iteam">
+            <form id="frm" action="" method="post" class="inquiry-form" target="_blank">
+                <!--发生事件-->
+
+                <input id="type" value="5" name="type" />
+
+                <div class="group">
+                    <label for="">时间：</label><input name="start" value="" id="start" class="Wdate" style="width: 90px" type="text" onFocus="WdatePicker({lang:'zh-cn'})">　至　<input name="end" value="" id="end" class="Wdate" style="width: 90px" type="text" onFocus="WdatePicker({lang:'zh-cn'})">
+                </div>
+
+                <!--经度-->
+                <div class="group">
+                    <label for="">经度：</label>大于 <input type="text" value="" name="minlong" class="span1" id="minlong">　小于 <input type="text" name="maxlong" value="" class="span1" id="maxlong"> <span>单位：度 范围:-180至180</span>
+                </div>
+
+                <!--纬度-->
+                <div class="group">
+                    <label for="">纬度：</label>大于 <input type="text" name="minlat" value="" class="span1" id="minlat">　小于 <input type="text" class="span1" name="maxlat" value="" id="maxlat"> <span style="margin-right: 60px">单位：度 范围:-90至90</span>
+
+                </div>
+
+
+
+                <div class="group">
+                    <label for="">强烈程度等级：</label>大于 <input type="text" value="" name="minlevel" class="span1" id="minlevel">　小于 <input type="text" value="" name="maxlevel" class="span1" id="maxlevel">
+                    <a href="javascript:void(0)" class="check" style="display: inline-block;margin-left: 150px" onclick="Data()" id="search">查询</a>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div class="title-content">
+            <h2 class="iteam-h1">
+                <div id="iteam-h1">查询结果：</div><!--<a href="javascript:void(0)" class="check onmap" id="show" rel="">地图</a>--><a href="javascript:void(0)" class="check ontext" id="save" rel="" onclick="exportSpecialExcel()">导出数据</a>
+            </h2>
+            <!--                    <h1 class="iteam-h1">查询结果：最近24小时地震信息 <a href="javascript:void(0)" class="onbutton onmap" id="show" rel="">显示在地图上</a><a href="javascript:void(0)" class="onbutton ontext" id="save">保存为文本</a></h1>-->
+            <div class="speedquery">
+                <div id="speedquery">
+                    <table border="0" cellpadding="0" cellspacing="0" class="speed-table1">
+                        <tr class="speed-tr-h1">
+                            <th width="70" align="center" style="padding-left: 20px">强烈程度</th>
+                            <th width="126" align="center">发生时刻(UTC+8)</th>
+
+                            <th width="60" align="center">经度(°)</th>
+                            <th width="60" align="center">纬度(°)</th>
+                            <th width="79" align="center">影响范围(千米)</th>
+                            <th width="260" align="center">参考位置</th>
+                            <!--                                <th width="85">操作</th>-->
+                        </tr>
+
+                    </table>
+                </div>
+                <p class="pagenum" id="pagenum"></p>
+                <div id="paging">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="~/Content/sheetjs/xlsx.full.min.js"></script>
+
+@*<script>
+        function GetData() {
+            //JQuery开始
+            $(function () {
+
+                $.getJSON(
+
+                    "GetData",
+                    function (data) {
+
+                        //处理json数据
+                        console.log(data);
+                        $dataJson = $.parseJSON(data);
+
+
+                        //获取数据个数
+                        //$dataNum = data.length;  jsonjson字符串的个数
+
+                        $dataNum = $dataJson.length;
+
+                        //alert("个数为" + $dataNum);
+
+
+
+
+                        //设置table tr
+                        $html = '<table border="0" cellpadding="0" cellspacing="0" class="speed-table1">' +
+                            '<tr class="speed-tr-h1">' +
+                            '<th width="51" align="center" style="padding-left: 20px">震级(M)</th>' +
+                            '<th width="126" align="center">发震时刻(UTC+8)</th>' +
+
+                            '<th width="60" align="center">纬度(°)</th>' +
+                            '<th width="60" align="center">经度(°)</th>' +
+                            '<th width="79" align="center">深度(千米)</th>' +
+                            '<th width="260" align="center">参考位置</th>' +
+                            '<!--                                <th width="85">操作</th>-->' +
+                            '</tr>',
+
+
+
+
+
+                            //将数据填充到表
+
+                            $j = 0;
+                        for ($i = 0; $i < $dataNum; $i++) $j++,
+                            $j % 2 == 0 ? $dataJson[$i].EId >= 6 ? $html += '<tr class="tr-red" style="background-color: #eeeeee;">' : $dataJson[$i].EId >= 4 ? $html += '<tr style="background-color: #eeeeee;font-weight: bold;">' : $html += '<tr style="background-color: #eeeeee;">' : $dataJson[$i].EId >= 6 ? $html += '<tr class="tr-red">' : $dataJson[$i].EId ? $html += '<tr style="font-weight: bold;">' : $html += "<tr>",
+                            $html += '<td align="center" style="padding-left: 20px">' + $dataJson[$i].EId + '</td><td align="center">' + $dataJson[$i].EId + '</td><td align="center">' + $dataJson[$i].EId + '</td><td align="center">' + $dataJson[$i].EId + "</td>",
+                            $html += '<td align="center">' + $dataJson[$i].EId + '</td><td align="left"><a href="' + $dataJson[$i].ELocation + '.html" cid="' + $dataJson[$i].CityId + '" id="cid">' + $dataJson[$i].ELocation + "</a></td></tr>";
+                        $html += "</table>",
+
+
+
+
+
+                            $("#speedquery").html($html)
+                    },
+
+                    "jsonp"
+
+
+                );
+
+            });
+        }
+
+    </script>*@
+
+
+
+

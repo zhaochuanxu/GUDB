@@ -1,0 +1,89 @@
+﻿
+@using GUDB.Model;
+@using PagedList.Mvc
+@model PagedList.IPagedList<UserLogin>
+@{
+    Layout = null;
+
+    ViewBag.Title = "UserLook";
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+<div>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        你正在查看   @Html.DisplayFor(model => model.FirstOrDefault().User.UName)  登录信息
+    </div>
+
+
+
+
+
+
+
+    <table class="table">
+        <tr>
+
+            <th>
+                登录时间
+            </th>
+            <th> 登录IP</th>
+
+
+            <th>登录地址</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ULTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ULIP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ULAdress)
+                </td>
+
+
+
+
+
+
+
+
+
+                @*<td>
+                        @Html.ActionLink("修改", "UserChange", new { id = item.UId }) |
+                        @Html.ActionLink("查看", "UserLook", new { id = item.UId }) |
+                        @Html.ActionLink("删除", "UserDelete", new { id = item.UId })|@Html.ActionLink("登录历史", "UserLoginIn", new { id = item.UId }) |
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+
+
+    <div>
+        @*分页主要代码*@
+        每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+        @Html.PagedListPager(Model, page => Url.Action("UserLoginIn", new { page }))
+    </div>
+    <p>
+        @Html.ActionLink("返回列表", "UserList") |
+
+    </p>

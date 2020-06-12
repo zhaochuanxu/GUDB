@@ -1,0 +1,261 @@
+﻿
+@model GUDB.Model.Investigator
+
+@{
+    ViewBag.Title = " 创建";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+<script>
+    $(function () { $("#unit").hide(); });
+
+</script>
+
+<script src="~/Content/Select/verSelect.2.0.js"></script>
+
+<script>
+
+    var Unitdata;
+    var select = new verjs_select();
+    $.ajax({
+        type: 'get',
+        url: "Data",
+        dataType: "json",   //服务器响应的数据类型
+        success: function (data) {
+            //处理data
+            Unitdata = data;
+            //alert(Unitdata);
+            console.log(Unitdata)
+
+
+            var select = new verjs_select();
+            select.render({
+                elem: "#search",
+                //data: [{ id: 1, name: "123456" }, { id: 2, name: "哈哈哈哈" }],
+                data: JSON.parse(Unitdata),   //后台传
+                // data: Unitdata,
+                init_value: [1],
+                checkbox: false,
+                
+            });
+            //alert(JSON.parse(Unitdata));
+
+
+
+
+        },
+        error:console.log("加载中")
+    });
+
+    $(document).ready(function () {
+        $("form").submit(function (e) {
+            alert("Submitted……");
+            //////alert("创建成功")
+            //alert(JSON.stringify(select.get_form_value('search')))
+            $("#unit").val(JSON.stringify(select.get_form_value('search')));
+        });
+    });
+
+
+</script>
+
+
+
+
+@using (Html.BeginForm("investigatorCreate","Admin",FormMethod.Post,new { name="input"}))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            你正在创建调查人员 @Html.DisplayFor(model => model.IId) 信息
+        </div>
+
+
+
+        <table class="table table-hover">
+
+            <tbody>
+
+
+                <!--UID-->
+                <tr>
+                    <td>
+                        身份证号
+
+                    </td>
+
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UId ">修改信息</a></td>*@
+
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IId, new { htmlAttributes = new { @class = "form-control", @id = "i8", placeholder = "唯一标识，后期不可修改" } })
+
+
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+                <!--UName-->
+                <tr>
+                    <td>
+                        姓名
+                    </td>
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IName, new { htmlAttributes = new { @class = "form-control", @id = "i2" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!--UP  a  s-->
+
+                <tr>
+                    <td>
+                        电邮
+                    </td>
+
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IEmail, new { htmlAttributes = new { @class = "form-control", @id = "i8" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <!--UPhone-->
+
+                <tr>
+                    <td>
+                        电话
+
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.IPhone, new { htmlAttributes = new { @class = "form-control", @id = "i3" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+                <tr>
+                    <td>
+                        单位
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+
+
+
+                            @Html.EditorFor(model => model.UId, new { htmlAttributes = new { @class = "form-control", @id = "unit" } })
+                            <div id="search"></div>
+
+
+                        </div>
+                    </td>
+
+
+
+
+
+
+                </tr>
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("返回列表", "investigatorList")
+        |
+
+
+        <input type="submit" value="创建"  class="btn btn-default"/>
+    </div>
+
+
+
+}
+<script src="~/Content/Select/verSelect.2.0.js"></script>
+<script>
+
+</script>
+

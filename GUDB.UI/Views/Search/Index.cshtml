@@ -1,0 +1,192 @@
+﻿
+@{
+    ViewBag.Title = "地质灾害";
+}
+
+
+
+@*<div class="input-group">
+                        <input type="text" class="form-control" onkeydown="onKeyDown(event)" />
+                        <span class="input-group-addon" "><i class="glyphicon glyphicon-search"></i></span>
+
+    </div>*@
+
+
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 column">
+                @*<div class="btn-group">
+                    <button type="button" class="btn btn-primary"> 快捷查询</button>
+                    <button type="button" class="btn btn-default">历史查询</button>*@
+                    @*<button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> 右</button>
+        <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> 全</button>*@
+                @*</div>*@
+            </div>
+            <div class="col-md-4 column"></div>
+     
+            <div class="col-md-4 column">
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text"  name="key"  class="form-control" placeholder="灾害类型">
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-4 column">
+            </div>
+        </div>
+            <!-- 开加一个container的目的是为了让整体布局居中 -->
+
+        <br/>
+        <br />
+        <br/>
+
+            <!-- 开始 -->
+            <div class="row">
+                <!-- 将要加入的略缩图放入row中 -->
+                <!-- 第一张略缩图开始 -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <a href="~/Search/MudSlides"><h4>泥石流</h4></a>
+                            <p style="color:blue;">
+                                泥石流是指在山区或者其他沟谷深壑，地形险峻的地区，因为暴雨、暴雪或其他自然灾害引发的山体滑坡并携带有大量泥沙以及石块的特殊洪流。我区多发的是山坡型泥石流,次为河谷型泥石流。主要发育于桂东北的南岭,桂东南 、桂中的弧形山脉中 。 多出 现 在多雨 和 暴雨 的 季 节 ,
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第一张略缩图结束 -->
+                <!-- 第二张略缩图开始 -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <a href="~/Search/KarstCollapse"><h4>岩溶塌陷</h4></a>
+                            <p style="color:blue;">
+                                岩溶地面塌陷是指覆盖在溶蚀洞穴之上的松散土体，在外动力或人为因素作用下产生的突发性地面变形破坏，其结果多形成圆锥形塌陷坑。我区的岩溶塌陷现象主要分布于桂中平原及桂林、玉林、黎塘等地的岩溶区中、致塌因素主要分为人为诱发、自然与人为因素复合诱发、自然塌陷几类。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第二张略缩图结束 -->
+                <!-- 第三张略缩图开始 -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <a href="~/Search/EarthQuake"> <h4>地震</h4></a>
+                            <p style="color:blue;">
+                                地震（英文名称:earthquake）又称地动、地振动，是地壳快速释放能量过程中造成的振动，期间会产生地震波的一种自然现象。一般震级大于4.7记得主要分布于桂东南和桂西地区，其次为桂东北地区。多数地震沿断裂成条带状分布，而且多集中于北东和北西两组断裂上。
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第三张略缩图结束 -->
+                <!-- 第四张略缩图开始 -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+                    <div class="thumbnail">
+
+                        <div class="caption">
+                            <a href="~/Search/SoilErosion"><h4>土壤侵蚀</h4></a>
+                            <p style="color:blue;">
+                                土壤侵蚀是指土壤及其母质在水力、风力、冻融或重力等外营力作用下，被破坏、剥蚀、搬运和沉积的过程。<br />
+                                五十年代,我区土壤侵蚀面积仅167万hm,到1987年就升为280万hm,而且中度以
+                                上的侵蚀占总侵蚀面积的42.9%。目前,中强度以上的侵蚀主要分布在桂南和桂东南的花
+                                岗岩地区和沿海、红层盆地等地带,潜在危险程度较高的是桂东和桂西的岩溶地区:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第四张略缩图结束 -->
+            </div>
+        </div>
+
+
+
+
+
+        <div class="container">
+            <!-- 开加一个container的目的是为了让整体布局居中 -->
+            <!-- 开始 -->
+            <div class="row">
+                <!-- 将要加入的略缩图放入row中 -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+                    <div class="thumbnail">
+
+                        <div class="caption">
+                            <a href="~/Search/ShrinkageSoil"> <h4>胀缩土</h4></a>
+                            <p style="color:blue;">
+                                胀性土的定义：土中黏粒成分主要由亲水性矿物组成。同时具有显著的吸水膨胀和欠水收缩两种变形特性的黏性土。胀缩土性质不稳定,反复变形特征明显,失水易发生收缩,遇水会产生急
+                                、加之土体中裂广布,且分布杂乱,从而膨胀士地基易出
+                                现局部隆起、坍塌或裂缝等问题。
+                                主要发育于第三纪泥岩所构成的丘陵区和盆地边缘,遍及全区30余县市。
+                                基岩和其风化的残坡积层具有随气候变化而胀缩变形的特点,使建筑于其上未做专
+                                的建筑物出现地基开裂变形,房屋傾斜倒塌的严重后果。
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+                    <div class="thumbnail">
+
+                        <div class="caption">
+                            <a  href="~/Search/coastErosion">  <h4>海岸侵蚀</h4></a>
+                            <p style="color:blue;">
+                                被侵蚀海
+                                岸的类型具有多样性和侵蚀强度的日趋严
+                                重性等特点。海岸侵蚀容易导致沿海地区
+                                土壤盐渍化,破坏沿海岸的生态系统,降
+                                低海岸的防护能力。我区有1595.25km的大陆海岸线,在长期的风浪、潮汐冲刷下,海岸带受到了
+                                地侵蚀。如防城县的迈尾岛,近30年来,海岸线后退了120多m,几千亩稻田被破坏
+                                别是近年来,沿海的防风林带遭到了人为的大面积破坏,使风沙卷土重来,浪潮更加
+                                猛。另外,部分海岸段虽然修筑了堤围,但堤围防高潮的标准低,经受不住大风大潮的
+                                击:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                  <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张--
+                  <div class="thumbnail">
+                      <div class="caption">
+                          <h4>京酱肉丝</h4>
+                          <p style="color:red;">
+                              咸甜适中,&nbsp;&nbsp;&nbsp;酱香浓郁,&nbsp;&nbsp;风味独特
+                          </p>
+
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                  <!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张
+                  <div class="thumbnail">
+                      <img src="img/index/8.jpg" alt="..."  class="img-responsive">
+                      <div class="caption">
+                          <h4>红烧茄子</h4>
+                          <p style="color:red;">
+                              家常便饭&nbsp;&nbsp;&nbsp;想吃联系我&nbsp;&nbsp;自己可炒
+                          </p>
+                      </div>
+                  </div>
+              </div>  -->
+            </div>
+        </div>

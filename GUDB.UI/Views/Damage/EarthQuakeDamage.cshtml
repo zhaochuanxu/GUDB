@@ -1,0 +1,278 @@
+﻿@model GUDB.Model.Damage
+
+@{
+    ViewBag.Title = "地震概览";
+}
+
+    @*<table class="table table-condensed">*@
+
+
+@*<script>
+
+
+    $(function(){
+        $("#show").click(function () {
+            alert("");
+            $("#DInjured").hide()
+
+        });});
+        
+
+
+
+
+</script>*@
+
+<table class="table table-hover">
+        <caption>
+            <h4>@Html.DisplayFor(model => model.Event.ELocation)   @Html.DisplayFor(model => model.Event.ETime) 地震损失概况</h4>
+        </caption>
+     
+
+        <!--表头-->
+            <thead>
+            
+           
+            <tr>
+                <th>名称</th>
+                <th>数据</th>
+                <th>单位</th>
+        
+            </tr>
+        </thead>
+     
+
+     
+            <tbody>
+
+                <tr>
+                    <td>
+                        记录损失日期
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DTime)
+                    </td>
+
+
+                    <td>(UTC+8)</td>
+                </tr>
+
+
+
+               
+
+
+                <!-- 直接致死人数-->
+                <tr>
+                    <td>
+                        直接致死人数
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DDirDead)
+                    </td>
+
+                    <td>(人)</td>
+
+                
+
+                </tr>
+
+                <!---受伤人数   -->
+                <tr>
+                    <td>
+                        受伤人数
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DInjured)
+                    </td>
+                    <td>(人)</td>
+                </tr>
+
+
+
+                <!--   间接致死(受伤后未能成功抢救而死亡)-->
+                <tr>
+                    <td>
+                        间接致死(受伤后未能成功抢救而死亡)
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DInDirDead)
+                    </td>
+                    <td>(人)</td>
+
+                </tr>
+
+
+                <!--失踪人数-->
+                <tr>
+                    <td>
+                        失踪人数
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DMissed)
+                    </td>
+
+                  
+                    <td>
+
+                       (人)</td>
+                </tr>
+
+
+                <!-- 倒塌建筑-居民楼-->
+                <tr>
+                    <td>
+                        倒塌建筑-居民楼
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DCollapsedLiving) (平方米)
+                    </td>
+                    <td>
+
+                        (平方米)
+                    </td>
+
+                </tr>
+
+
+                <!-- 倒塌建筑-办公楼-->
+                <tr>
+                    <td>
+                        倒塌建筑-办公楼
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DCollapsedWoking)
+                    </td>
+                    <td>(平方米)</td>
+                </tr>
+
+
+                <!-- 倒塌建筑-工业用房-->
+                <tr>
+                    <td>
+
+
+                        倒塌建筑-工业用房
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DCollapsedFactoy)
+                    </td>
+
+                    <td>(平方米)</td>
+
+                </tr>
+
+
+
+                <!--受损建筑-居民楼-->
+                <tr>
+                    <td>
+                        受损建筑-居民楼
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DImpairedLiving)
+                    </td>
+                    <td>(平方米)</td>
+                </tr>
+
+
+
+                <!--  受损建筑-办公楼-->
+                <tr>
+                    <td>
+                        受损建筑-办公楼
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DImpairedWoring)
+                    </td>
+                    <td> (平方米)</td>
+                </tr>
+
+
+                <!-- 受损建筑-工业用房-->
+                <tr>
+                    <td>
+                        受损建筑-工业用房
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DImpairedFactory)
+                    </td>
+                    <td>
+
+                        (平方米)
+                    </td>
+                </tr>
+
+
+                <!-- 除人建筑外的所有其它财产损失-->
+                <tr>
+                    <td>
+                        除人建筑外的所有其它财产损失
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DOtherDamageMoney) (人民币元)
+                    </td>
+                    <td>
+
+                        (人民币元)
+                    </td>
+                </tr>
+
+                <!-- 其它说明 其它说明-->
+                <tr>
+                    <td>
+                        其它说明
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.DOtherDamageDes)
+                    </td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+    </table>
+
+<!--  -->
+
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

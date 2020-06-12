@@ -1,0 +1,176 @@
+﻿@model GUDB.Model.Event
+
+@{
+    ViewBag.Title = "UserLook";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+<div>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        你正在查看   @Html.DisplayFor(model => model.ETime) 在 经度为 @Html.DisplayFor(model => model.ELat)  纬度为 @Html.DisplayFor(model => model.ELong)  @Html.DisplayFor(model => model.ELocation) 地区 发
+        生的 @Html.DisplayFor(model=>model.Type.TName)
+    </div>
+
+
+    <table class="table table-hover">
+
+        <tbody>
+
+            <tr>
+                <td>
+                    事件Id
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.EId)
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+                <td>
+
+                    发生时间ain
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.ETime)
+                </td>
+
+
+
+
+            </tr>
+
+
+
+
+
+            <tr>
+                <td>
+                    经度
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.ELat)
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    纬度
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.ELong)
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    地区
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.ELocation)
+                </td>
+
+            </tr>
+
+
+            <!-- 倒塌建筑-办公楼-->
+            <tr>
+                <td>
+                    强烈程度等级
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.Elevel)
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td>
+                    所造成的影响范围
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.ERange)
+                </td>
+
+
+
+            </tr>
+
+
+            <!-- 倒塌建筑-居民楼-->
+            <tr>
+                <td>
+                    造成的灾害描述
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.EDamageDes)
+                </td>
+
+            </tr>
+
+
+
+            <!-- 倒塌建筑-办公楼-->
+            <tr>
+                <td>
+                    事发地的地质情况
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.EEarthDes)
+                </td>
+
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("返回列表", "EarthQuakeList",new { tid=Model.TId}) |
+    @Html.ActionLink("修改", "EarthQuakeChange", new { id = Model.EId })
+
+</p>
+

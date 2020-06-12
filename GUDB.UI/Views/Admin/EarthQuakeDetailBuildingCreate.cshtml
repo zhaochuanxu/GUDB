@@ -1,0 +1,404 @@
+﻿@model GUDB.Model.DamageBuilding
+@{
+    ViewBag.Title = "更改 ";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+<script src="~/Content/ceic/WdatePicker/WdatePicker.js"></script>
+
+
+<script>
+
+    $(function () {
+        $("#DEFA").hide();
+        $("#BuildingEidCreate").hide();//隐藏件
+        $("#BuildingIidCreate").hide();
+
+    }
+
+    );
+</script>
+
+<script src="~/Content/Select/verSelect.2.0.js"></script>
+
+<script>
+
+    var Unitdata;
+    var select = new verjs_select();
+    $.ajax({
+        type: 'get',
+        url: "../investigatorData",
+        dataType: "json",   //服务器响应的数据类型
+        success: function (data) {
+            //处理data
+            Unitdata = data;
+            //alert(Unitdata);
+            ////console.log(Unitdata)
+
+            //alert(Unitdata);
+            var select = new verjs_select();
+            select.render({
+                elem: "#search",
+                //data: [{ id: 1, name: "123456" }, { id: 2, name: "哈哈哈哈" }],
+                data: JSON.parse(Unitdata),   //后台传
+                // data: Unitdata,
+                init_value: [1],
+                checkbox: false,
+
+            });
+            //alert(JSON.parse(Unitdata));
+
+
+
+
+        },
+        error: console.log("加载中")
+    });
+
+    $(document).ready(function () {
+        $("form").submit(function (e) {
+            var EID = @ViewBag.EId;
+            $("#BuildingEidCreate").val(EID);
+            $("#BuildingIidCreate").val(JSON.stringify(select.get_form_value('search')));
+            if ($("#i1").val() == "" || $("#i1").val() == null) {
+                alert("建筑编码不能为空");
+                //console.log(JSON.stringify(select.get_form_value('search')));
+                ////alert(JSON.stringify(select.get_form_value('search')));
+                //alert(" 损失产权人单位或个人姓名不能为空");
+                //alert(EID);
+                //alert($("#BuildingEidCreate").val());
+
+                //alert(JSON.stringify(select.get_form_value('search')));
+                //alert($("#BuildingIidCreate").val());
+                return false;
+            }
+            else {
+                if ($("#i2").val() == "" || $("#i2").val() == null) {
+                    alert("建筑损失程度不能为空"); return false;
+                }
+                else {
+
+                    if ($("#i3").val() == "" || $("#i3").val() == null) {
+                        alert("建筑损失面积不能为空"); return false;
+                    }
+
+                    else {
+
+                        if ($("#i5").val() == "" || $("#i5").val() == null) {
+                            alert(" 损失产权人单位或个人姓名不能为空");
+
+                            return false;
+                        }
+                        else {
+                            if (JSON.stringify(select.get_form_value('search')) == '""' || JSON.stringify(select.get_form_value('search')) == null || JSON.stringify(select.get_form_value('search')) == "") {
+
+                                alert("调查人员不能为空"); return false;
+                            }
+
+                            else {
+                                alert(EID);
+                                //alert($("#BuildingEidCreate").val());
+
+                                //alert(JSON.stringify(select.get_form_value('search')));
+                                //alert($("#BuildingIidCreate").val());
+                                alert("Submitted……");
+                                //////alert("创建成功")
+                                //alert(JSON.stringify(select.get_form_value('search')))
+                                $("#BuildingIidCreate").val(JSON.stringify(select.get_form_value('search')));
+                                $("#BuildingEidCreate").val(EID);
+                                // alert($("#PeopleEidCreate").val());
+                            };
+                    }
+                    }
+                }
+
+            }
+
+
+
+        });
+    });
+
+
+</script>
+
+@using (Html.BeginForm("EarthQuakeDetailBuildingCreate", "Admin", FormMethod.Post, new { name = "input" })){
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        你正在添加地质灾害Id
+      为  @ViewBag.EId 损失建筑
+    </div>
+
+
+    <table class="table table-hover">
+
+        <!--首先设置时间Id-->
+        @Html.EditorFor(model => model.EId, new { htmlAttributes = new { @class = "form-control", @value = ViewBag.EId, @id = "BuildingEidCreate" } })
+
+        @Html.EditorFor(model => model.IId, new { htmlAttributes = new { @class = "form-control", @value = "1", @id = "BuildingIidCreate" } })
+
+
+        <tbody>
+            <!--UID-->
+            <tr>
+                <td>
+                    建筑损失编码
+
+                </td>
+
+
+
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UId ">修改信息</a></td>*@
+
+
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @Html.EditorFor(model => model.DBId, new { htmlAttributes = new { @class = "form-control", @id = "i1", placeholder = "唯一标识，后期不可修改,不可为空" } })
+
+
+                    </div>
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    损失程度
+
+                </td>
+
+
+
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UId ">修改信息</a></td>*@
+
+
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @Html.EditorFor(model => model.DBLevel, new { htmlAttributes = new { @class = "form-control", @id = "i2" } })
+
+
+                    </div>
+                </td>
+
+            </tr>
+
+
+
+
+
+            <tr>
+                <td>
+                    损失面积
+
+                </td>
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @Html.EditorFor(model => model.DBDamageSize, new { htmlAttributes = new { @class = "form-control", @id = "i3" } })
+
+
+
+                    </div>
+                </td>
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+            </tr>
+
+
+            <tr>
+                <td>
+                    损失折算金额
+
+                </td>
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @Html.EditorFor(model => model.DBDamageMoney, new { htmlAttributes = new { @class = "form-control", @id = "i4" } })
+
+
+
+                    </div>
+                </td>
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+            </tr>
+            <tr>
+                <td>
+                    损失产权人单位或个人姓名
+
+                </td>
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @Html.EditorFor(model => model.DBDamageName, new { htmlAttributes = new { @class = "form-control", @id = "i5" } })
+
+
+
+                    </div>
+                </td>
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+            </tr>
+            <tr>
+                <td>
+                    损失产权人单位或者个人联系电话
+
+                </td>
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @Html.EditorFor(model => model.DBDamagePhone, new { htmlAttributes = new { @class = "form-control", @id = "i6" } })
+
+
+
+                    </div>
+                </td>
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+            </tr>
+
+            <tr>
+                <td>
+                    其他说明
+
+                </td>
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @Html.EditorFor(model => model.DBOtherDes, new { htmlAttributes = new { @class = "form-control", @id = "i7" } })
+
+
+
+                    </div>
+                </td>
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+            </tr>
+
+            <tr>
+                <td>
+                    调查人员
+
+                </td>
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        <div id="search"></div>
+
+
+                    </div>
+                </td>
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    调查人员姓名
+
+                </td>
+
+
+
+                <td>
+
+
+                    <div class="col-lg-4">
+
+                        @*@Html.EditorFor(model => model., new { htmlAttributes = new { @class = "form-control", @id = "i7" } })*@
+                        <div id="search"></div>
+
+
+                    </div>
+                </td>
+
+                @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+            </tr>
+        </tbody>
+
+    </table>
+    <div class="form-actions no-color">
+        <!--   Html.ActionLink("返回", "EarthQuakeDetailPeopleList", new { tid = ViewBag.Type })  <!--参数返回类 型 -->
+        |
+
+
+        <input type="submit" value="创建" class="btn btn-default" />
+    </div>
+}
+
+
+<script src="~/Content/Select/verSelect.2.0.js"></script>
+<script>
+
+</script>
+

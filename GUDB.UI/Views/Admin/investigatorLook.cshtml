@@ -1,0 +1,130 @@
+﻿@model GUDB.Model.Investigator
+
+@{
+    ViewBag.Title = "UnitLook";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+<div>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        你正在查看 @Html.DisplayFor(model => model.IName) 的信息
+    </div>
+
+
+
+    <hr />
+    <table class="table table-hover">
+
+        <tbody>
+
+            <tr>
+                <td>
+                    身份证号
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.IId)
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+                <td>
+
+                    姓名
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.IName)
+                </td>
+
+
+
+
+            </tr>
+
+
+
+
+
+            <tr>
+                <td>
+                    电话
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.IPhone)
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    邮箱
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.IEmail)
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    单位
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.Unit.UName)
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    其他联系方式
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.IOtherConnect)
+                </td>
+
+            </tr>
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("返回列表", "investigatorList") |
+    @Html.ActionLink("修改", "investigatorChange", new { id = Model.IId })
+
+</p>
+

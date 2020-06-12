@@ -1,0 +1,433 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>概述 | API开放平台</title>
+    <meta name="description" content="外勤365提供了企业接入申请、接口格式规范、第三方业务系统接入说明、业务功能接口说明、客户端JSSDK等API，企业可使用这些API实现个性化业务功能需求。">
+    <link rel="icon" href="/favicon.ico">
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Content/API/js/100.67697e7c.js"></script>
+    @*<link rel="preload" href="/assets/css/0.styles.a3a49550.css" as="style">
+        <link rel="preload" href="~/Content/API/js/app.113f806a.js" as="script">
+        <link rel="preload" href="~/Content/API/js2.d5892a72.js" as="script">
+        <link rel="preload" href="~/Content/API/js/41.02e9b29f.js" as="script">
+        <link rel="prefetch" href="~/Content/API/js/10.fd1558d2.js">
+        <link rel="prefetch" href="~/Content/API/js/100.67697e7c.js">
+        <link rel="prefetch" href="~/Content/API/js/101.cbd5d410.js">
+        <link rel="prefetch" href="~/Content/API/js/102.f800544b.js">
+        <link rel="prefetch" href="~/Content/API/js/103.a04df100.js">
+        <link rel="prefetch" href="~/Content/API/js/104.eebc0e46.js">
+        <link rel="prefetch" href="/assets/js/105.c9e5a4cc.js">
+        <link rel="prefetch" href="/assets/js/106.7de4806b.js">
+        <link rel="prefetch" href="/assets/js/107.2fbacd67.js">
+        <link rel="prefetch" href="/assets/js/108.6e84fef0.js">
+        <link rel="prefetch" href="/assets/js/11.a21d4dde.js">
+        <link rel="prefetch" href="/assets/js/12.79f07e37.js">
+        <link rel="prefetch" href="/assets/js/13.e49a14fe.js">
+        <link rel="prefetch" href="/assets/js/14.e7674757.js">
+        <link rel="prefetch" href="/assets/js/15.ae475a5c.js">
+        <link rel="prefetch" href="/assets/js/16.4f7a5da0.js">
+        <link rel="prefetch" href="/assets/js/17.57ee3f4f.js">
+        <link rel="prefetch" href="/assets/js/18.0d25fba6.js">
+        <link rel="prefetch" href="/assets/js/19.cbf89f58.js">
+        <link rel="prefetch" href="/assets/js/20.eff26a9b.js">
+        <link rel="prefetch" href="/assets/js/21.74facc74.js">
+        <link rel="prefetch" href="/assets/js/22.8847f2b7.js">
+        <link rel="prefetch" href="/assets/js/23.15afc9e9.js">
+        <link rel="prefetch" href="/assets/js/24.4c387959.js">
+        <link rel="prefetch" href="/assets/js/25.56d39b51.js">
+        <link rel="prefetch" href="/assets/js/26.eb014da4.js">
+        <link rel="prefetch" href="/assets/js/27.80f60e4e.js">
+        <link rel="prefetch" href="/assets/js/28.b6f67d7b.js">
+        <link rel="prefetch" href="/assets/js/29.bfd477d5.js">
+        <link rel="prefetch" href="/assets/js/3.6ab63e75.js">
+        <link rel="prefetch" href="/assets/js/30.f345a812.js">
+        <link rel="prefetch" href="/assets/js/31.e1b875a6.js">
+        <link rel="prefetch" href="/assets/js/32.45988dad.js">
+        <link rel="prefetch" href="/assets/js/33.9262223b.js">
+        <link rel="prefetch" href="/assets/js/34.63391028.js">
+        <link rel="prefetch" href="/assets/js/35.5d400cc0.js">
+        <link rel="prefetch" href="/assets/js/36.1dd30dc8.js">
+        <link rel="prefetch" href="/assets/js/37.3837c65b.js">
+        <link rel="prefetch" href="/assets/js/38.b319ecef.js">
+        <link rel="prefetch" href="/assets/js/39.8a5dd3ad.js">
+        <link rel="prefetch" href="/assets/js/4.2ca620c2.js">
+        <link rel="prefetch" href="/assets/js/40.80b96184.js">
+        <link rel="prefetch" href="/assets/js/42.7135811c.js">
+        <link rel="prefetch" href="/assets/js/43.d68f573d.js">
+        <link rel="prefetch" href="/assets/js/44.36818ca5.js">
+        <link rel="prefetch" href="/assets/js/45.38980571.js">
+        <link rel="prefetch" href="/assets/js/46.d8389004.js">
+        <link rel="prefetch" href="/assets/js/47.8478e9ae.js">
+        <link rel="prefetch" href="/assets/js/48.dc23dbfe.js">
+        <link rel="prefetch" href="/assets/js/49.8e5afba5.js">
+        <link rel="prefetch" href="/assets/js/5.12ec2bec.js">
+        <link rel="prefetch" href="/assets/js/50.91f260dc.js">
+        <link rel="prefetch" href="/assets/js/51.3074fd10.js">
+        <link rel="prefetch" href="/assets/js/52.43c92a91.js">
+        <link rel="prefetch" href="/assets/js/53.e20d23fe.js">
+        <link rel="prefetch" href="/assets/js/54.05a8c825.js">
+        <link rel="prefetch" href="/assets/js/55.a2e495e7.js">
+        <link rel="prefetch" href="/assets/js/56.298dcd38.js">
+        <link rel="prefetch" href="/assets/js/57.37314995.js">
+        <link rel="prefetch" href="/assets/js/58.599b8a69.js">
+        <link rel="prefetch" href="/assets/js/59.2b7256a2.js">
+        <link rel="prefetch" href="/assets/js/6.0186dc9a.js">
+        <link rel="prefetch" href="/assets/js/60.ab2439e1.js">
+        <link rel="prefetch" href="/assets/js/61.05846613.js">
+        <link rel="prefetch" href="/assets/js/62.12b5ff2d.js">
+        <link rel="prefetch" href="/assets/js/63.3f17e249.js">
+        <link rel="prefetch" href="/assets/js/64.c74b8a41.js">
+        <link rel="prefetch" href="/assets/js/65.ffdfb2d4.js">
+        <link rel="prefetch" href="/assets/js/66.42be35bb.js">
+        <link rel="prefetch" href="/assets/js/67.1f14aa13.js">
+        <link rel="prefetch" href="/assets/js/68.89c3996b.js">
+        <link rel="prefetch" href="/assets/js/69.b3660e00.js">
+        <link rel="prefetch" href="/assets/js/7.40f4e220.js">
+        <link rel="prefetch" href="/assets/js/70.316d374b.js">
+        <link rel="prefetch" href="/assets/js/71.5712bde7.js">
+        <link rel="prefetch" href="/assets/js/72.3dac3961.js">
+        <link rel="prefetch" href="/assets/js/73.f282becc.js">
+        <link rel="prefetch" href="/assets/js/74.7fa1c765.js">
+        <link rel="prefetch" href="/assets/js/75.f7144298.js">
+        <link rel="prefetch" href="/assets/js/76.cc0ea877.js">
+        <link rel="prefetch" href="/assets/js/77.9c96d794.js">
+        <link rel="prefetch" href="/assets/js/78.af2812cf.js">
+        <link rel="prefetch" href="/assets/js/79.92fd58a5.js">
+        <link rel="prefetch" href="/assets/js/8.ee657af9.js">
+        <link rel="prefetch" href="/assets/js/80.4f90aa7a.js">
+        <link rel="prefetch" href="/assets/js/81.3de31ab1.js">
+        <link rel="prefetch" href="/assets/js/82.96aacf31.js">
+        <link rel="prefetch" href="/assets/js/83.6c5a3f88.js">
+        <link rel="prefetch" href="/assets/js/84.7ac1a55e.js">
+        <link rel="prefetch" href="/assets/js/85.9f0ecafc.js">
+        <link rel="prefetch" href="/assets/js/86.5985fbea.js">
+        <link rel="prefetch" href="/assets/js/87.30650bfb.js">
+        <link rel="prefetch" href="/assets/js/88.bc348e86.js">
+        <link rel="prefetch" href="/assets/js/89.d0c03b08.js">
+        <link rel="prefetch" href="/assets/js/9.03307753.js">
+        <link rel="prefetch" href="/assets/js/90.a2ecb32a.js">
+        <link rel="prefetch" href="/assets/js/91.33e2d2a2.js">
+        <link rel="prefetch" href="/assets/js/92.cbe2531b.js">
+        <link rel="prefetch" href="/assets/js/93.4db0368f.js">
+        <link rel="prefetch" href="/assets/js/94.b1240a4d.js">
+        <link rel="prefetch" href="/assets/js/95.71d33d4e.js">
+        <link rel="prefetch" href="/assets/js/96.a3ed8ebf.js">
+        <link rel="prefetch" href="/assets/js/97.2f296bcd.js">
+        <link rel="prefetch" href="/assets/js/98.d69a5342.js">
+        <link rel="prefetch" href="/assets/js/99.6e79dca1.js">*@
+    <link rel="stylesheet" href="~/Content/API/CSS/0.styles.a3a49550.css">
+    <link href="~/Content/API/CSS/0.styles.a3a49550.css" rel="stylesheet" />
+
+
+
+    <script>
+        $(function () {
+            //alert( 开始填充);
+            $html = '<br/> </br/> <div class="theme-default-content content__default" >'+
+
+
+
+                '<h2 id="概述">' +
+            '   <a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2>' +
+            '<p>广西地质灾害数据库提供了用户接入申请、接口格式规范、第三方接入说明、业务功能接口说明等API，' +
+            '用户可使用这些API实现数据使用功能需求。</p>' +
+            '<h2 id="api接入"><a href="#api接入" aria-hidden="true" class="header-anchor">#</a> API接入</h2>' +
+            '</div >' +
+
+            '<footer class="page-edit"><!----> <!----></footer>' +
+
+
+
+            '                <div class="page-nav">' +
+            '                   <p class="inner">' +
+                '                      <!----> <span class="next">' +
+            '                         <a href="javascript:void()" onclick="B1()">' +
+            '                            接入申请' +
+            '                  </a>' +
+               '             →'+
+           '             </span>'+
+                '    </p>'+
+                ' </div>';
+            $("#showMain").html($html);
+
+
+        });
+
+
+        function B1() {
+            $("#showMain").empty();
+            //var $B1 = '<p>广西地质灾害数据库提供了用户接入申请、接口格式规范、第三方接入说明、业务功能接口说明等API，' +
+            //    '用户可使用这些API实现数据使用功能需求。</p>';
+            //$("#showMain").html($B1);
+
+            //alert( 开始填充);
+            $html = ' <div class="theme-default-content content__default"><h1 id="用户接入申请">'+
+               ' <a href = "#用户接入申请" aria - hidden="true" class="header-anchor" >#</a> 用户接入申请 '+
+           ' </h1 > <h3 id="接口说明"><a href="#接口说明" aria-hidden="true" class="header-anchor">#</a> 接口说明</h3> <p>'+
+                '为了给想要使用地质灾害数据调查研究的研究人员或者， 广西地质灾害数据库Web系统向所有客户提供服务API接口和数据推送服务。</p> <p>​       </p> <h3 id="如何申请"> '+
+                ' <a href = "#如何申请"'+
+               ' aria - hidden="true" class="header-anchor" >#</a > 如何申请</h3 >'+
+                   ' <p>​          接入申请是由每个网站注册这都可提出开通申请，'+
+                 '  '+
+            '为了数据安全, 必须登录注册用户才能发送和获取所有请求数据需要。</p ></div > '+
+            $("#showMain").html($html);
+
+        } //展示用户接入申请
+
+        
+        function B2() {
+            $("#showMain").empty();
+            $html = '<br/> <br/><div class="theme-default-content content__default"> <h1>接口格式规范</h1 >' +
+                '<h3 id="请求格式说明"><a href="#请求格式说明" aria-hidden="true" class="header-anchor">#</a> 请求格式说明</h3> '+
+             '  <p > 第三方用户请求广西地质灾害数据库Web系统格式要求，'+
+                '请求数据支持以Get方式提交请求，请求头 <code>  Content - Type: application / json; charset = utf - 8</code >' +
+                '返回消息体是json格式数据，json格式是可以动态扩展的，接口实际返回json中的字段可能会比文档描述返回的多，使用时请参照文档字段取值，文档没有描述多的字段都是已过时字段请勿使用。开放接口服务器通过检验digest对请求进行校验（下面有校验方式）。若确认此次GET请求为正常请求，则接入生效，否则接入失败。</p > '+
+
+                '<p > 校验流程如下：</p >' +
+                '<ol><li><p>开发者需要将请求数据按“消息体|name|type”格式拼成字符串</p></li> '+
+                '<li><p>开放接口服务器获得字符串后，查看是否为注册用户，与数据库进行对比对比，标识该请求是否为正常请求</p></li></ol > <p> ' +
+                '广西地质灾害数据库Web系统开放接口URL格式如下：</p > <div class="language- extra-class"> ' +
+                '<pre class="language-text"><code>http://www.gxnu.com/api/data?{name}&&{type}'+
+                '</code></pre></div><p>参数说明：</p> <table><thead> <tr><th>URL参数</th> <th>格式说明' +
+                
+
+
+                '</th ></tr ></thead > <tbody><tr><td>name</td> <td>需要校验的用户名，如用户名为：张三</td></tr>   '+
+                '<tr > <td>Type</td> <td>对接想要下载地质灾害类型的数据，如地震数据：EarthQuake</td></tr > '+ 
+                '</tbody ></table > ' +
+
+
+               ' <p>type可选参数列表：</p> <table><thead> <tr><th>URL参数列表</th> <th>参数意义' +
+                
+
+
+                '</th ></tr ></thead > <tbody><tr><td>EarthQuake</td> <td>地震</td></tr>   ' +
+                '</th ></tr ></thead > <tbody><tr><td>MudSlide</td> <td>泥石流</td></tr>   ' +
+                '</th ></tr ></thead > <tbody><tr><td>KarstCollpse</td> <td>岩溶侵蚀</td></tr>   ' +
+                '</th ></tr ></thead > <tbody><tr><td>CoastErosion</td> <td>海岸侵蚀</td></tr>   ' +
+                '</th ></tr ></thead > <tbody><tr><td>SoilErosion</td> <td>土壤侵蚀</td></tr>   ' +
+                '</th ></tr ></thead > <tbody><tr><td> ShrinkageSoil  </td> <td>胀缩土</td></tr>   ' +
+                '</tbody ></table > ' +
+
+
+                '<p > 广西地质灾害数据库Web系统接口消息体格式如下：</p > <p>请求消息体，格式为：  ' +
+                'JSON格式数据，如 请求示例</p > <p>地震历史数据接口示例：</p>  <pre class="language-text"><code><p> ' +
+                'Name:张三   &nbsp; &nbsp;Type:EarthQuake</p></code></pre> <p>返回实例数据：</p>' +
+
+
+
+                 // ？、 返 回 数 据
+
+
+               /* 'Name: Test</p > <p>Type:EarthQuake</p> */'<div class="language-json extra-class"><pre class="language-json"><code> ' +
+
+                //括号   /*<span class="token property">&quot;data&quot;</span><span class="token operator">:</span> */   
+                '             <span class="token string"> [{\&quot;Time\&quot;:\&quot; ' +
+                '2016-12-11T3:15:27\ &quot;,\&quot;Location\&quot;:\&quot; ' +
+                '广西玉林市陆川县\ &quot;, \&quot; Lat\&quot;: \&quot;22.42\&quot;, \&quot; Long\&quot;: \&quot;110.24 \&quot;' +
+                ' }] </span > </span>' +
+
+
+
+            '     </code></pre></div><p'+
+
+
+                '> <p>' +  //生成URl
+                '生成请求URL：</p> <div class="language- extra-class"><pre class="language-text"><code>http://www.gxnu.club/api/data?name=张三&&type=EarthQuake ' +
+                '</code></pre></div><p>消息体：' +
+                '</p ><h3 id="响应格式说明"><a href="#返回格式说明" aria-hidden="true" class="header-anchor">#</a> 响应格式说明  '+
+            '</h3 > <div class="language-json extra-class"><pre class="language-json"><code> ' +
+
+                 //括号   /*<span class="token property">&quot;data&quot;</span><span class="token operator">:</span> */   
+                '             <span class="token string"> [{\&quot;Time\&quot;:\&quot; ' +
+                '2016-12-11T3:15:27\ &quot;,\&quot;Location\&quot;:\&quot; ' +
+                '广西玉林市陆川县\ &quot;, \&quot; Lat\&quot;: \&quot;22.42\&quot;, \&quot; Long\&quot;: \&quot;110.24 \&quot;'+
+       ' }] </span > </span>' +
+
+
+
+                '     </code></pre></div><table><thead><tr><th>参数</th> <th>说明</th></tr></thead> <tbody><tr><td>Code</td> <td>响应码无：成功<br/>响应码 202： 失败没有type参数 <br/> 响应码203: 失败没有此用户<br/>响应码201: 失败缺少参数 <br/> </td></tr><tr><td>Time</td> <td>地质灾害发</td></tr> <tr><td>Location</td> '+
+                ' <td > 地质灾害发生地点</td ></tr > <tr><td>Long</td/><td>地质灾害发生精度</td>' +
+                '<tr><td>Long</td/><td>地质灾害发生经度</td></tr></tbody ></table ></div > <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">' +
+                '         ←' +
+                ' <a   href="javascript:void(0)" onclick=" B1()" class="prev">' +
+            '            用户接入申请' +
+                ' </a></span> <span class="next"><a href="/SERVER/sys/push_introduction.html">' +
+        '            帮助'+
+                ' </a>'+
+            '→  + '+
+                '</span></p></div> ';
+
+            $("#showMain").html($html);
+        }
+
+
+
+    </script>
+</head>
+
+
+<body>
+    <div id="app" data-server-rendered="true">
+        <div class="theme-container">
+
+
+            <header class="navbar">
+                <div class="sidebar-button">@*<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
+                    <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-1212-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5 .373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 012 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path>
+                    
+                    
+                    </svg>*@
+                </div> 
+           
+
+                <!--L o g -->
+                <a href="/API/iNDEX" class="home-link router-link-active"><img src="~/Images/logo.png" alt="广西地质灾害数据库API开放平台" class="logo"> <span class="site-name can-hide">广西地质灾害数据库API开放平台</span></a>
+                
+                
+                <div class="links" >
+                
+                
+                @*<div class="search-box">
+                <input aria-label="Search" autocomplete="off" spellcheck="false" value="">  <!----></div>  *@
+                
+                <nav class="nav-links can-hide">      
+                    <div class="nav-item">
+        <a href="index" class="nav-link router-link-exact-active router-link-active">
+
+                更新日志</a>
+                         </div> <!----></nav>
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                                                                           </div>
+    </header>
+    
+     <!--头部结束-->
+    <div class="sidebar-mask"></div> 
+        <aside class="sidebar">
+        <!--    <nav class="nav-links">
+                <div class="nav-item"><a href="/SERVER/" 
+         class="nav-link router-link-exact-active router-link-active">服务端API</a></div>
+                <div class="nav-item"><a href="/JSSDK/" class="nav-link">客户端API</a></div>
+                <div class="nav-item"><a href="/AI/" class="nav-link">人工智能API</a></div>
+                <div class="nav-item"><a href="/PROVIDER/" class="nav-link">第三方应用开发API</a></div>
+                <div class="nav-item"><a href="/CHANGELOG/" class="nav-link">更新日志</a></div> </nav>   -->
+
+
+            <ul class="sidebar-links">
+                <li><a href="~/api/INDEX" class="active sidebar-link">概述</a></li>
+                <li>
+                    <section class="sidebar-group depth-0">
+                        <p class="sidebar-heading"><span>API接入说明</span> <!----></p>
+                        <ul class="sidebar-links sidebar-group-items">
+                            <li>
+                                <a href="javascript:void(0)" onclick="
+                        B1()" class="sidebar-link">用户接入申请</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="
+                        B2()" class="sidebar-link">业务接口格式规范</a>
+                            </li>
+
+                            <li><a href="javascript:void(0)" onclick=" B1()" class="sidebar-link">帮助</a></li>
+                        </ul>
+                    </section>
+
+                </li>
+                <li><a href="~/Home/Index" class="active sidebar-link">返回</a></li>
+
+
+
+
+                @*<li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>系统信息管理</span> </p>
+                    <ul class="sidebar-links sidebar-group-items">
+                    <li><a href="/SERVER/sysapp/dictionary.html" class="sidebar-link">行政区划接口</a></li>
+                    <li><a href="/SERVER/sysapp/syncMessage.html" class="sidebar-link">日志信息同步</a></li>
+                    </ul>
+                </section></li>
+
+        <li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>通讯录管理</span></p>
+            <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/sysapp/organization.html" class="sidebar-link">部门信息管理</a></li>
+            <li><a href="/SERVER/sysapp/employee.html" class="sidebar-link">人员信息管理</a></li></ul></section></li>*@
+
+
+                @*<li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>客户管理</span></p>
+        <ul class="sidebar-links sidebar-group-items">
+        <li><a href="/SERVER/app/cm/customer.html" class="sidebar-link">客户信息接口</a>
+            </li><li><a href="/SERVER/app/cm/store.html" class="sidebar-link">门店信息接口</a></li>
+            <li><a href="/SERVER/app/cm/dealer.html" class="sidebar-link">经销商信息接口</a></li>
+            <li><a href="/SERVER/app/cm/district.html" class="sidebar-link">销售区域管理</a></li>
+            <li><a href="/SERVER/app/cm/customerLevel.html" class="sidebar-link">客户等级</a></li>
+            <li><a href="/SERVER/app/cm/customerType.html" class="sidebar-link">客户类型</a></li>
+            <li><a href="/SERVER/app/cm/customerProp.html" class="sidebar-link">客户合作状态</a></li>
+        <li><a href="/SERVER/app/cm/basCmCustomerRel.html" class="sidebar-link">客户层级关系</a></li>
+        <li><a href="/SERVER/app/cm/customerPush.html" class="sidebar-link">客户信息推送</a></li>
+            <li><a href="/SERVER/app/cm/address.html" class="sidebar-link">客户收货地址信息接口</a></li>
+            <li><a href="/SERVER/app/customer_contract/contract.html" class="sidebar-link">客户合同接口</a></li>
+            <li><a href="/SERVER/app/cm/certification.html" class="sidebar-link">客户实名认证接口</a></li></ul>
+        </section></li>*@
+
+                @*<li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>商品管理</span> </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/product/productType.html" class="sidebar-link">商品类型接口</a></li><li><a href="/SERVER/app/product/product.html" class="sidebar-link">商品信息接口</a></li><li><a href="/SERVER/app/product/productSaleScale.html" class="sidebar-link">商品可售范围接口</a></li><li><a href="/SERVER/app/product/productPrice.html" class="sidebar-link">商品价格方案接口</a></li><li><a href="/SERVER/app/product/productPromotion.html" class="sidebar-link">商品买赠促销接口</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>促销活动</span> </p> <ul class="sidebar-links sidebar-group-items">
+        <li><a href="/SERVER/app/cuxiao/cuxiao.html" class="sidebar-link">促销数据推送</a></li>
+           <li><a href="/SERVER/app/cuxiao/cuxiaoQuery.html" class="sidebar-link">促销查询接口</a></li>
+        <li><a href="/SERVER/app/cuxiao/cuxiaoSync.html" class="sidebar-link">促销接口</a></li>
+        <li><a href="/SERVER/app/cuxiao/cuxiaoInterPlanSync.html" class="sidebar-link">互联活动方案</a>
+            </li></ul></section></li>*@
+
+                @*<li><section class="sidebar-group depth-0"><p class="sidebar-heading">
+        <span>目标管理</span></p> <ul class="sidebar-links sidebar-group-items">
+        <li><a href="/SERVER/app/kpi/kpi.html" class="sidebar-link">指标设置查询接口</a></li></ul></section></li>*@
+
+                @*<li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>终端检核</span> </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/terminalInspection/terminalInspection.html" class="sidebar-link">终端检核查询接口</a></li>
+            <li><a href="/SERVER/app/terminalInspection/terminalInspectionSync.html" class="sidebar-link">终端检核数据推送</a></li></ul></section></li>
+        <li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>铺货上报</span> </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/sku_report/sku_report.html" class="sidebar-link">铺货上报接口</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>协同办公</span> </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/sync_office/attendance.html" class="sidebar-link">考勤管理接口</a></li><li><a href="/SERVER/app/sync_office/user_defined.html" class="sidebar-link">自定义表单接口</a></li><li><a href="/SERVER/app/sync_office/user_defined_push.html" class="sidebar-link">自定义表单数据推送</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>投放资产管理</span> </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/asset_outer/asset_outer.html" class="sidebar-link">投放资产管理接口</a></li><li><a href="/SERVER/app/asset_outer/asset_outer_push.html" class="sidebar-link">投放资产推送接口</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>外部余额</span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/customer_amount/customer_amount.html" class="sidebar-link">外部余额查询接口</a>
+                                                    </li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>客户拜访</span>
+                                                          </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/visit/visit.html"
+                                                                                                                    class="sidebar-link">客户拜访接口</a></li>
+
+        <li><a href="/SERVER/app/visit/visit_push.html" class="sidebar-link">客户拜访数据推送</a></li></ul></section>
+
+                                                        </li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>
+        库存上报</span> </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/std_store/std_store.html"
+                                                                              class="sidebar-link">库存上报接口</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>销量上报</span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/xlsb/std_xlsb_bas.html" class="sidebar-link">销量上报接口</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进销存（PSI）</span> </p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SERVER/app/psi/stdorder.html" class="sidebar-link">采购管理接口</a></li><li><a href="/SERVER/app/psi/stdorder_push.html" class="sidebar-link">采购订单数据推送</a></li><li><a href="/SERVER/app/psi/stdorder_dh.html" class="sidebar-link">订单接口</a></li><li><a href="/SERVER/app/psi/stdorder_dh_push.html" class="sidebar-link">订单数据推送</a></li><li><a href="/SERVER/app/psi/esss_inventory.html" class="sidebar-link">库存盘点接口</a></li><li><a href="/SERVER/app/psi/esss_car_inventory.html" class="sidebar-link">车辆盘点接口</a></li><li><a href="/SERVER/app/psi/esss_storehouse_change.html" class="sidebar-link">调拨单接口</a></li><li><a href="/SERVER/app/psi/esss_storehouse_change_push.html" class="sidebar-link">调拨数据推送</a></li><li><a href="/SERVER/app/psi/esss_exchange_product.html" class="sidebar-link">兑换货接口</a></li><li><a href="/SERVER/app/psi/esss_exchange_product_push.html" class="sidebar-link">兑换数据同步</a></li><li><a href="/SERVER/app/psi/esss_receivable_history.html" class="sidebar-link">收款单接口</a></li><li><a href="/SERVER/app/psi/esss_inother.html" class="sidebar-link">其他入库接口</a></li><li><a href="/SERVER/app/psi/esss_outother.html" class="sidebar-link">其他出库接口</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>渠道分销管理（DMS）</span> </p> <ul class="sidebar-links sidebar-group-items">
+
+        <li><a href="/SERVER/app/dms/dms.html" class="sidebar-link">DMS管理接口</a></li>
+        <li><a href="/SERVER/app/dms/dms_push.html" class="sidebar-link">DMS数据推送</a></li>
+        <li><a href="/SERVER/app/dms/ic_dms_get_psi_info.html" class="sidebar-link">抽取下游商贸版数据</a>
+            </li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>附录</span></p> <ul class="sidebar-links sidebar-group-items">*@
+                @*<li><a href="/SERVER/sys/appendix1.html" class="sidebar-link">错误码说明</a></li>
+        <li><a href="/SERVER/sys/appendix2.html" class="sidebar-link">有效字符说明</a></li>
+        <li><a href="/SERVER/sys/appendix3.html" class="sidebar-link">接入代码示例</a></li>
+        <li><a href="/SERVER/sys/appendix4.html" class="sidebar-link">行政区划编码表</a></li></ul></section></li>*@
+
+
+            </ul> </aside>
+        
+       
+        <main class="page">
+            <div id="showMain"></div>
+
+
+            </main>
+           
+        </div><div class="global-ui"></div>
+    </div>
+
+
+    @*<script src="/assets/js/app.113f806a.js" defer></script>
+    <script src="/assets/js/2.d5892a72.js" defer></script>
+    <script src="/assets/js/41.02e9b29f.js" defer></script>*@
+</body>
+
+</html>

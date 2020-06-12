@@ -1,0 +1,82 @@
+﻿@model GUDB.Model.DamageResource
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EarthQuakeResource</title>
+</head>
+<body>
+    <div>
+        <h4>DamageResource</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Admin.AName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Admin.AName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Event.ELocation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Event.ELocation)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Investigator.UId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Investigator.UId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DRName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DRName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DRSrc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DRSrc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DRDes)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DRDes)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DROther)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DROther)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.DRId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

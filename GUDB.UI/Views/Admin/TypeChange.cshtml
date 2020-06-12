@@ -1,0 +1,378 @@
+﻿@model GUDB.Model.Type
+
+@{
+    Layout = null;
+}
+
+
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+<script src="~/Scripts/min.js"></script>   <!--需要  翻 -->
+@*<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>*@
+@Styles.Render("~/bundles/Bootstarp/css")
+<script>
+
+    $(function () {
+        $("#i1").hide();
+        $("#i2").hide();
+        $("#i3").hide();
+        $("#i4").hide();
+        $("#i5").hide();
+        $("#i6").hide();
+
+        $("#i8").hide();
+        $("#i7").hide();
+
+    }
+
+
+
+    );
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (e) {
+            if ($("#i8").val() == "") { alert('地质灾害名称不能为空'); return false; } //名字
+            else {
+
+            }
+        });
+    });
+</script>
+@using (Html.BeginForm("TypeChange", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            你正在修改地质灾害事件类型 @Html.DisplayFor(model => model.TName) 信息
+        </div>
+
+
+
+        <hr />
+        <table class="table table-hover">
+
+            <tbody>
+
+
+                <!--UID-->
+                <tr>
+                    <td>
+                        灾害类型代号
+
+                    </td>
+
+
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.TId)
+                    </td>
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UId ">修改信息</a></td>*@
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('.n1').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+
+                            <!--唯一标识-->
+                            <input class="form-control l1  n1" id="disabledInput " type="text" placeholder="自动生成 禁止修改" disabled>
+
+
+                            @Html.EditorFor(model => model.TId, new { htmlAttributes = new { @class = "form-control", id = "i1" } })
+
+
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+                <!--UName-->
+                <!--          <tr>
+                    <td>
+                        灾害类型名称
+                    </td>
+
+                    <td>
+
+                        //Html.DisplayFor(model => model.TName)
+                    </td>
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UName ">修改信息</a></td>*@
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i2').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            // /Html.EditorFor(model => model.UName, new { htmlAttributes = new { class = "form-control",  id = "i2" } })
+
+
+
+                        </div>
+                    </td>
+                </tr> -->
+                <!--UP  a  s-->
+
+                <tr>
+                    <td>
+                        灾害类型名称
+
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(model => model.TName)
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i8').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.TName, new { htmlAttributes = new { @class = "form-control", @id = "i8" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <!--UPhone-->
+
+                <tr>
+                    <td>
+                        灾害主要特点
+
+                    </td>
+
+                    <td>
+                        <div id="0">
+                            @Html.DisplayFor(model => model.TCharact) 
+                        </div>
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i3').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            
+                                @Html.EditorFor(model => model.TCharact, new { htmlAttributes = new { @class = "form-control" ,  @id="i3"  } })
+                               
+
+
+
+                            </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+                <tr>
+                    <td>
+                        灾害引发主要原因
+                    </td>
+
+                    <td>
+                        <div id="1">
+                            @Html.DisplayFor(model => model.TReason)  </div>
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i4').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.TReason, new { htmlAttributes = new { @class = "form-control", @id = "i4" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        灾害发生后的损失特点
+                    </td>
+
+                    <td>
+                        <div id="2">
+                            @Html.DisplayFor(model => model.TDamageCharact) 
+                            </div>
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i5').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.TDamageCharact, new { htmlAttributes = new { @class = "form-control", @id = "i5" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>
+
+                <tr>
+                    <td>
+                        灾害等级描述
+                    </td>
+
+                    <td>
+                        <div id="3">
+                                @Html.DisplayFor(model => model.TDamageLevelDec)
+                            </div>
+                    </td>
+
+
+                    <td>
+                        <a onclick="$(function () {
+                         $('#i7').show();
+                 } );" href="javascritp:void(0)">修改</a>
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.TDamageLevelDec, new { htmlAttributes = new { @class = "form-control", @id = "i7" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+
+
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("返回列表", "TypeList")
+        |
+
+
+
+        <input type="submit" value="修改" class="btn btn-default" />
+
+    </div>
+
+
+}
+
+
+<script></script>
+
+
+<script type='text/javascript' src='~/Scripts/jquery.limittext.js'></script>
+<script type='text/javascript' src='~/Scripts//test.js'></script>
+<script src="~/Scripts/jquery.limittext.js"></script>
+<script src="~/Scripts/test.js"></script>
+

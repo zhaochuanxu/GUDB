@@ -1,0 +1,119 @@
+﻿@model GUDB.Model.Unit
+
+@{
+    ViewBag.Title = "UnitLook";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+<div>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        你正在查看地质灾害调查单位   @Html.DisplayFor(model => model.UName) 的信息
+    </div>
+
+
+
+    <hr />
+    <table class="table table-hover">
+
+        <tbody>
+
+            <tr>
+                <td>
+                    单位ID
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UId)
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+                <td>
+
+                    单位名
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UName)
+                </td>
+
+
+
+
+            </tr>
+
+
+
+
+
+            <tr>
+                <td>
+                  单位地址
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UAddress)
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    邮编
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UEmail)
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                   单位性质
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(model => model.UProperty)
+                </td>
+
+            </tr>
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("返回列表", "UnitList") |
+    @Html.ActionLink("修改", "UnitChange", new { id = Model.UId })
+
+</p>
+

@@ -1,0 +1,177 @@
+﻿
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.highcharts.com.cn/highmaps/highmaps.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+<script src="http://cdn.highcharts.com.cn/highmaps/8.0.4/highmaps.js"></script>
+<script src="http://cdn.highcharts.com.cn/highcharts/8.0.4/highcharts.js"></script>
+<h3>下载</h3>
+
+<div id="container" style="height:450px;"></div>
+
+<script>
+Highcharts.setOptions({
+		lang: {
+			drillUpText: '< 返回 “{series.name}”'
+		}
+	});
+	var map = null;
+	geochina = 'https://data.jianshukeji.com/jsonp?filename=geochina/';
+	$.getJSON(geochina + 'guangxi.json&callback=?', function(mapdata) {
+		var data = [];
+		//统计广西各地区地质灾害总次数放到map中
+		//把数据存到map中
+		var area = new Map();
+		$.ajax({
+			//同步获取数据，在服务端数据到来之前不可执行下面的代码，否则无法初始化地图
+			async:false,
+			type:'GET',
+			dataType:'json',
+			//服务器url
+			url:'DataChart?id'+@ViewData["ChartTypeId"],
+			success:function (disaters) {
+				for (var i = 0; i < disaters.length ; i++) {
+					var temp = [];
+					var value = disaters[i].value;
+					for (var j = 0; j < value.length; j++) {
+						temp.push(value[j]);
+					}
+					area.set(disaters[i].name,temp);
+				}
+			},
+			error:function (error) {
+				alert("地图初始化错误！");
+			}
+		});
+
+		Highcharts.each(mapdata.features, function(md, index) {
+			var cityName = md.properties.name
+			//统计各个地区的灾害总次数以颜色深浅的形式展现在地图上
+			var total = 0;
+			let cityConditions = area.get(cityName + "市");
+			if (typeof (cityConditions) !== "undefined"){
+				for (let i = 0; i < cityConditions.length; i++) {
+					total += cityConditions[i];
+				}
+			}
+			var tmp = {
+				name: cityName,
+				value: total
+			};
+			if(md.properties.drilldown) {
+				tmp.drilldown = md.properties.drilldown;
+			}
+			data.push(tmp);
+		});
+
+		map = new Highcharts.Map('container', {
+			// chart: {
+			// 	events: {
+			// 		drilldown: function(e) {
+			// 			this.tooltip.hide();
+			//
+			// 			//ajax请求后台获取地级市城市地质灾害情况
+			// 			// 异步下钻
+			// 			if (e.point.drilldown) {
+			// 				var pointName = e.point.properties.fullname;
+			// 				map.showLoading('正在进入' + pointName +'，请稍后...');
+			//
+			// 				// 获取二级行政地区数据并更新图表
+			// 				$.getJSON(geochina +   e.point.drilldown + '.json&callback=?', function(data) {
+			// 					data = Highcharts.geojson(data);
+			// 					Highcharts.each(data, function(d) {
+			// 						if(d.properties.drilldown) {
+			// 							d.drilldown = d.properties.drilldown;
+			// 						}
+			// 						d.value = Math.floor((Math.random() * 100) + 1); // 生成 1 ~ 100 随机值
+			// 					});
+			// 					map.hideLoading();
+			// 					map.addSeriesAsDrilldown(e.point, {
+			// 						name: e.point.name,
+			// 						data: data,
+			// 						dataLabels: {
+			// 							enabled: true,
+			// 							format: '{point.name}'
+			// 						}
+			// 					});
+			// 					map.setTitle({
+			// 						text: pointName
+			// 					});
+			// 				});
+			// 			}
+			// 		},
+			// 		drillup: function() {
+			// 			map.setTitle({
+			// 				text:  '广西地址灾害情况',
+			// 			});
+			// 		}
+			// 	}
+			// },
+			title: {
+				text: '广西地质灾害—  @ViewBag.ChartType 情况',
+			},
+			subtitle: {
+				useHTML: true,
+			},
+			mapNavigation: {
+				enabled: true,
+				buttonOptions: {
+					verticalAlign: 'bottom'
+				}
+			},
+			tooltip: {
+				shadow:true,
+				followTouchMove:true,
+				useHTML: true,
+				headerFormat: '<table><tr><td>{point.name}</td></tr>',
+				// pointFormat: '<tr><td>全称</td><td>{point.properties.fullname}</td></tr>' +
+				// 		'<tr><td>行政编号</td><td>{point.properties.areacode}</td></tr>' +
+				// 		'<tr><td>经纬度</td><td>{point.properties.longitude},{point.properties.latitude}</td></tr>' +
+				// 		'<tr><td>泥石流</td><td>' + '次</td></tr>' +
+				// 		'<tr><td>地震</td><td>0次</td></tr>' +
+				// 		'<tr><td>土壤侵袭</td><td>0次</td></tr>' +
+				// 		'<tr><td>海岸侵蚀</td><td>0次</td></tr>',
+				footerFormat: '</table>',
+				pointFormatter: function () {
+					let cityName = this.properties.fullname;
+					let disaster = area.get(cityName);
+					console.log(disaster);
+					return  '<tr><td>全称</td><td>' + cityName + '</td></tr>' +
+					'<tr><td>行政编号</td><td>'+ this.properties.areacode + '</td></tr>' +
+					'<tr><td>经纬度</td><td>' + this.properties.longitude + ',' + this.properties.latitude + '</td></tr>' +
+					//'<tr><td>泥石流</td><td>' + disaster[0] + '次</td></tr>' +
+			  //      '<tr><td>地震</td><td>' + disaster[1] +'次</td></tr>' +
+			  //      '<tr><td>土壤侵袭</td><td>' + disaster[2]+ '次</td></tr>' +
+			  //      '<tr><td>海岸侵蚀</td><td>' + disaster[3] + '次</td></tr>' +
+			  //      '<tr><td>胀缩土</td><td>' + disaster[4] + '次</td></tr>' +
+			  //      '<tr><td>岩溶坍塌</td><td>' + disaster[5] + '次</td></tr>'
+					@ViewBag.EventName+disaster[0] + '次</td></tr>'
+				}
+			},
+			colorAxis: {
+				min: 0,
+				minColor: '#fbfbff',
+				maxColor: '#2c20ee',
+				labels:{
+					style:{
+						"color":"red","fontWeight":"bold"
+					}
+				}
+			},
+			series: [{
+				data: data,
+				mapData: mapdata,
+				joinBy: 'name',
+				name: '广西地质灾害情况',
+				states: {
+					hover: {
+						color: '#a4edba'
+					}
+				}
+			}]
+		});
+	});</script>
+</body>
+</html>

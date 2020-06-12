@@ -1,0 +1,295 @@
+﻿
+@model GUDB.Model.Event
+
+@{
+    ViewBag.Title = "更改 ";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+<script src="~/Content/ceic/WdatePicker/WdatePicker.js"></script>
+
+
+<script>
+
+    $(function () {
+        $("#DEFA").hide();
+    }
+
+        );
+</script>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            你正在创建   
+  @ViewData["TName"] 事件
+        </div>
+
+
+
+
+
+
+        <table class="table table-hover">
+
+            <tbody>
+
+                
+                <!--UID-->
+                <tr>
+                    <td> 事件ID</td>
+                    <td>
+                        <div class="col-lg-4">
+                            @Html.EditorFor(model => model.EId , new { htmlAttributes = new { @class = "form-control", id="EId"} })
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                @Html.EditorFor(model => model.TId, new { htmlAttributes = new { @class = "form-control", @id = "DEFA", @Value = ViewBag.Type} })
+
+
+                <!--UName-->
+                <tr>
+                    <td>
+                        事件发生时刻
+                    </td>
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @*<div class="group">
+                        <label for="">时间：</label><input name="start" value="" id="start" class="Wdate" style="width: 90px" type="text" onFocus="WdatePicker({lang:'zh-cn'})">　至　<input name="end" value="" id="end" class="Wdate" style="width: 90px" type="text" onFocus="WdatePicker({lang:'zh-cn'})">
+                    </div>*@
+
+                            @Html.EditorFor(model => model.ETime, new { htmlAttributes = new { @class = "form-control", @id = "i2", onFocus = "WdatePicker({lang:'zh-cn', dateFmt:'yyyy-MM-dd HH:mm:ss'})" } })
+
+                            @*name="start" value="" id="start" class="Wdate" style="width: 90px" type="text" )*@
+
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!--UP  a  s-->
+
+                <tr>
+                    <td>
+
+                        发生位置—经度
+                    </td>
+
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.ELat, new { htmlAttributes = new { @class = "form-control", @id = "i5" } })
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <!--UPhone-->
+
+                <tr>
+                    <td>
+                        发生位置——纬度
+
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.ELong ,new { htmlAttributes = new { @class = "form-control",id="long"} })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+                <tr>
+                    <td>
+                        地理位置
+                    </td>
+
+
+
+                    <td>
+
+
+                    <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.ELocation, new { htmlAttributes = new { @class = "form-control", @id = "i4" } })
+
+
+
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+                <!--真名字-->
+                <tr>
+                    <td>
+                        事件强烈程度等级
+
+                    </td>
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.Elevel, new { htmlAttributes = new { @class = "form-control", @id = "i5" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!--身份证-->
+                <tr>
+                    <td>
+                        实际影响范围
+
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.ERange, new { htmlAttributes = new { @class = "form-control", @id = "i6" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+                <!-- 用户其它联系方式-->
+                <tr>
+                    <td>
+                        事件所造成的损失概况
+
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.EDamageDes, new { htmlAttributes = new { @class = "form-control", @id = "i7" } })
+
+
+
+                        </div>
+                    </td>
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UID ">修改信息</a></td>*@
+
+                </tr>
+
+
+                <tr>
+                    <td>
+                        事件发生地点的地质构造特点说明
+
+                    </td>
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.EEarthDes, new { htmlAttributes = new { @class = "form-control", @id = "i5" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+
+
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("返回列表", "EarthQuakeList",new { tid=ViewData["Type"]})
+        |
+
+
+
+        <input type="submit" value="创建" class="btn btn-default" />
+
+    </div>
+
+
+}
+

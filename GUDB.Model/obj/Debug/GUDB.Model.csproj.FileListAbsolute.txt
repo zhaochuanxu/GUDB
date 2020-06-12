@@ -1,0 +1,16 @@
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\GUDB.Model.dll.config
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\GUDB.Model.dll
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\GUDB.Model.pdb
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\EntityFramework.dll
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\EntityFramework.xml
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\广西地质灾害数据库\GUDB\GUDB.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\广西地质灾害数据库\GUDB\GUDB.Model\obj\Debug\GUDB.Model.Migrations.InitialCreate.resources
+E:\广西地质灾害数据库\GUDB\GUDB.Model\obj\Debug\GUDB.Model.csproj.GenerateResource.cache
+E:\广西地质灾害数据库\GUDB\GUDB.Model\obj\Debug\GUDB.Model.csproj.CoreCompileInputs.cache
+E:\广西地质灾害数据库\GUDB\GUDB.Model\obj\Debug\GUDB.Model.csproj.CopyComplete
+E:\广西地质灾害数据库\GUDB\GUDB.Model\obj\Debug\GUDB.Model.dll
+E:\广西地质灾害数据库\GUDB\GUDB.Model\obj\Debug\GUDB.Model.pdb
+E:\广西地质灾害数据库\GUDB\GUDB.Model\obj\Debug\GUDB.Model.csprojAssemblyReference.cache

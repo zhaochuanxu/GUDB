@@ -1,0 +1,287 @@
+﻿
+@model GUDB.Model.User
+
+@{
+    ViewBag.Title = "更改 ";
+    Layout = null;
+}
+
+
+
+@*<h2>UserLook</h2>*@
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            你正在创建用户 @Html.DisplayFor(model => model.UName) 信息
+        </div>
+
+
+
+
+
+
+        <table class="table table-hover">
+
+            <tbody>
+
+
+                <!--UID-->
+                <tr>
+                    <td>
+                        用户ID
+
+                    </td>
+
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UId ">修改信息</a></td>*@
+
+                    
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+
+                            <!--唯一标识-->
+                            <input class="form-control l1  n1" id="disabledInput " type="text" placeholder="自动创建" disabled>
+
+
+
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+                <!--UName-->
+                <tr>
+                    <td>
+
+                        用户 名
+                    </td>
+
+                    
+
+
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UName ">修改信息</a></td>*@
+
+    
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UName, new { htmlAttributes = new { @class = "form-control", @id = "i2" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!--UP  a  s-->
+
+                <tr>
+                    <td>
+                        密码
+
+                    </td>
+
+                  
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UPassword, new { htmlAttributes = new { @class = "form-control", @id = "i8" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <!--UPhone-->
+
+                <tr>
+                    <td>
+                        电话号
+
+                    </td>
+
+               
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UPhone, new { htmlAttributes = new { @class = "form-control", @id = "i3" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UPhone ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+                <!--邮 箱-->
+                <tr>
+                    <td>
+                        电子邮箱 </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UMail, new { htmlAttributes = new { @class = "form-control", @id = "i4" } })
+
+
+
+                        </div>
+                    </td>
+
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UMail ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+                <!--真名字-->
+                <tr>
+                    <td>
+                        真实姓名
+
+                    </td>
+
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UIdName, new { htmlAttributes = new { @class = "form-control", @id = "i5" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!--身份证-->
+                <tr>
+                    <td>
+                        身份证号码
+
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UIdNumber, new { htmlAttributes = new { @class = "form-control", @id = "i6" } })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+
+
+                <!-- 用户其它联系方式-->
+                <tr>
+                    <td>
+                        用户其它联系方式
+
+                    </td>
+
+                 
+
+                    <td>
+
+
+                        <div class="col-lg-4">
+
+                            @Html.EditorFor(model => model.UOtherConnect, new { htmlAttributes = new { @class = "form-control", @id = "i7" } })
+
+
+
+                        </div>
+                    </td>
+                    @*<td><a href="~/Admin/Change?key=@Html.DisplayFor(model => model.UId) && type=UID ">修改信息</a></td>*@
+
+                </tr>
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+
+
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("返回列表", "UserList")
+        |
+
+
+
+        <input type="submit" value="创建" class="btn btn-default" />
+
+    </div>
+
+
+}
+

@@ -1,0 +1,254 @@
+﻿/* 整体布局 */
+.mainbox {
+    width: 1000px;
+    background: #fff;
+    position: relative;
+    margin: auto;
+    z-index: 1;
+}
+
+.dir {
+    padding: 10px 10px 10px 25px;
+  
+    background: url(../../Images/ceic/position_icon.png) no-repeat 10px center;
+    font-family: Microsoft Yahei;
+    color: #c5c5c5;
+}
+
+.l1 {
+    width: 879px;
+    float: left;
+    overflow: hidden;
+}
+
+.r1 {
+    width: 276px;
+    margin-left: 15px;
+    float: left;
+    overflow: hidden;
+}
+
+
+/***2016-11-16***/
+.zqxl {
+    border: 1px solid #cfcfcf;
+}
+
+.zqxl_box {
+    padding: 15px;
+}
+
+.zqxl_l {
+    width: 620px;
+}
+
+.zqxl_r {
+    width: 320px;
+    background: #dcdcdd;
+    padding: 5px 10px 0px;
+    height: 545px;
+}
+
+.zqxl_tab {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+    .zqxl_tab li {
+        border-bottom: 1px dashed #929293;
+        display: block;
+        padding: 10px 0px;
+        cursor: pointer;
+        color: #000000;
+    }
+
+        .zqxl_tab li.hover span, .zqxl_tab li.hover p {
+            background: #015293;
+            color: #fff;
+        }
+
+        .zqxl_tab li span {
+            font-size: 18px;
+            font-family: Microsoft Yahei;
+            display: block;
+            padding: 0px 10px;
+            line-height: 30px;
+        }
+
+        .zqxl_tab li p {
+            padding: 0px 10px;
+            line-height: 24px;
+        }
+
+.page02 {
+    margin-top: 15px;
+    text-align: center;
+}
+
+    .page02 a {
+        margin-right: 15px;
+        color: #0093dd;
+    }
+
+/***2016-11-28***/
+.dz {
+    height: 400px;
+    border: 1px solid #d4d4d4;
+    margin-top: 10px;
+}
+
+.dz_xx {
+    margin: 15px 0px;
+    border-left: 1px solid #d4d4d4;
+    border-top: 1px solid #d4d4d4;
+    width: 100%;
+    background: #f4f4f4;
+}
+
+    .dz_xx tr td {
+        border-right: 1px solid #d4d4d4;
+        border-bottom: 1px solid #d4d4d4;
+        padding: 10px;
+    }
+
+.color01 {
+    color: #015293
+}
+
+
+
+
+
+.ml15 {
+    margin-left: 15px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.mr15 {
+    margin-right: 15px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.ov {
+    overflow: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rf {
+    float: right;
+}
+
+.cl {
+    clear: both;
+}
+
+.title01 {
+    font-size: 24px;
+    font-family: Microsoft Yahei;
+    border-bottom: 2px solid #27629c;
+    margin: 15px 0px;
+}
+
+    .title01 b {
+        background: #27629c;
+        color: #fff;
+        padding: 7px 20px;
+        line-height: 45px;
+    }
+
+.title02 {
+    border-bottom: 2px solid #015293;
+    font-size: 18px;
+    line-height: 37px;
+    font-family: Microsoft Yahei;
+    color: #015293;
+}
+
+    .title02 a {
+        color: #015293;
+    }
+
+.title03 {
+    font-size: 18px;
+    line-height: 37px;
+    font-family: Microsoft Yahei;
+    border-bottom: 1px solid #cfcfcf;
+    text-indent: 0.5em;
+}
+
+    .title03 a {
+        color: #000;
+    }
+/***2016-11-02新增***/
+.mr5 {
+    margin-right: 5px;
+}
+
+.title05 {
+    font-size: 18px;
+    line-height: 37px;
+    font-family: Microsoft Yahei;
+    border-bottom: 1px solid #015293;
+    text-indent: 0.5em;
+    color: #015293;
+}
+
+    .title05 a {
+        color: #8b8c8d;
+        float: right;
+        font-size: 12px;
+    }
+
+.title06 {
+    font-size: 18px;
+    font-family: Microsoft Yahei;
+    border-bottom: 2px solid #27629c;
+}
+
+    .title06 span {
+        background: #27629c;
+        padding: 8px 15px;
+        color: #fff;
+        display: inline-block;
+    }
+
+.title07 {
+    font-size: 18px;
+    font-family: Microsoft Yahei;
+    color: #015293;
+}
+
+    .title07 a {
+        float: right;
+        font-size: 12px;
+        color: #8b8c8c;
+        margin-right: 5px;
+        margin-top: 5px;
+    }
+
+.list02 li {
+    padding-top: 20px;
+    padding-left: 15px;
+    background: url(../images/list.png) no-repeat 0px 25px;
+}
+
+    .list02 li a span {
+        float: right;
+    }
+
+
+

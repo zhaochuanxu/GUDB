@@ -1,0 +1,824 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>*@
+
+<script src="~/Scripts/bootstrap.js"></script>
+<div class="table-responsive">
+    <table summary="下载列表" class="table table-striped table-bordered table-hover">
+
+        <caption>下载列表</caption>
+
+        <thead>
+
+            <tr>
+                <th class="col-md-2">
+
+                    选项
+
+                </th>
+                <th class="col-md-2">
+
+                    下载选项
+
+                </th>
+                <th class="col-md-5">
+
+                    下载描述
+
+                </th>
+
+                <th class="col-md-2">
+
+                    下载 <span>↓</span>
+
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+
+
+
+
+            <tr>
+                <td>
+
+                    地址灾害事件下载
+
+                </td>
+                <th class="row">
+
+                    <div class="dropdown">
+                        <a type="button" class="btn dropdown-toggle showEvent" id="dropdownMenu1"
+                           data-toggle="dropdown">
+                            选择
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation" class="dropdown-header">地质灾害事件类型</li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(0,'全部')">全部 </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(1,'地震')">
+                                    地震
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(2,'泥石流')">泥石流</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(5,'胀缩土')">
+                                    胀缩土
+                                </a>
+                            </li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(4,'土壤侵蚀')">
+                                    土壤侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(6,'海岸侵蚀')">
+                                    海岸侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(3,'岩溶侵蚀')">
+                                    岩溶侵蚀
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+
+                </th>
+
+
+
+
+                <td>
+
+                    下载有关广西境内发生的地质灾害事件
+
+                </td>
+
+                <td>
+
+                    <a id="EventTypeDownLoad" href="javascript:void(0)" onclick="" title="下载相关数据">下载</a>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td>
+
+                    地址灾害事件建筑损失数据下载
+
+                </td>
+                <th class="row">
+
+                    <div class="dropdown">
+                        <a type="button" class="btn dropdown-toggle showEvent" id="dropdownMenu3"
+                           data-toggle="dropdown">
+                            选择
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation" class="dropdown-header">地质灾害事件类型</li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventTypeBuilding0,'全部')">全部 </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventTypeBuilding(1,'地震')">
+                                    地震
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventTypeBuilding(2,'泥石流')">泥石流</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventTypeBuilding(5,'胀缩土')">
+                                    胀缩土
+                                </a>
+                            </li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventTypeBuilding(4,'土壤侵蚀')">
+                                    土壤侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventTypeBuilding(6,'海岸侵蚀')">
+                                    海岸侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventTypeBuilding(3,'岩溶侵蚀')">
+                                    岩溶侵蚀
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+
+                </th>
+
+
+
+
+                <td>
+
+                    下载有关广西境内发生的地质灾害造成的建筑损失
+
+                </td>
+
+                <td>
+
+                    <a id="EventTypeBuildingDownLoad" href="#" title="数据下载">下载</a>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+
+                    地址灾害事件人员损失下载
+
+                </td>
+                <th class="row">
+
+                    <div class="dropdown">
+                        <a type="button" class="btn dropdown-toggle showEvent" id="dropdownMenu1"
+                           data-toggle="dropdown">
+                            选择
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation" class="dropdown-header">地质灾害事件类型</li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(0,'全部')">全部 </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(1,'地震')">
+                                    地震
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(2,'泥石流')">泥石流</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(5,'胀缩土')">
+                                    胀缩土
+                                </a>
+                            </li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(4,'土壤侵蚀')">
+                                    土壤侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(6,'海岸侵蚀')">
+                                    海岸侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(3,'岩溶侵蚀')">
+                                    岩溶侵蚀
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+
+                </th>
+
+
+
+
+                <td>
+
+                    下载有关广西境内发生的地质灾害造成的人员伤亡事件数据
+
+                </td>
+
+                <td>
+
+                    <a id="EventTypeDownLoad" href="#" title="下载">下载</a>
+
+                </td>
+
+            </tr>
+
+
+
+            <!--地震图表展示-->
+
+            <tr>
+                <td>
+
+                    地质灾害图表下载
+
+                </td>
+                <th class="row">
+
+                    <div class="dropdown">
+                        <a type="button" class="btn dropdown-toggle showEvent" id="dropdownMenu4"
+                           data-toggle="dropdown">
+                            选择
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation" class="dropdown-header">地质灾害事件类型</li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="Chart(0,'全部')">全部 </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="Chart(1,'地震')">
+                                    地震
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="Chart(2,'泥石流')">泥石流</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="Chart(5,'胀缩土')">
+                                    胀缩土
+                                </a>
+                            </li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="Chart(4,'土壤侵蚀')">
+                                    土壤侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="Chart(6,'海岸侵蚀')">
+                                    海岸侵蚀
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="Chart(3,'岩溶侵蚀')">
+                                    岩溶侵蚀
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+
+                </th>
+
+
+
+
+                <td>
+
+                    下载有关广西境内发生的地质灾害可视化图表
+
+                </td>
+
+                <td>
+
+                    <a  id="ChaertDownLoad" title="下载">打开</a>
+
+                </td>
+
+            </tr>
+
+
+
+            @* <tr>
+            <td>
+
+                地址灾害事件下载
+
+            </td>
+            <th class="row">
+
+                <div class="dropdown">
+                    <a type="button" class="btn dropdown-toggle showEvent" id="dropdownMenu1"
+                       data-toggle="dropdown">
+                        选择
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation" class="dropdown-header">地质灾害事件类型</li>
+
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(0,'全部')">全部 </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(1,'地震')">
+                                地震
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(2,'泥石流')">泥石流</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(5,'胀缩土')">
+                                胀缩土
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(4,'土壤侵蚀')">
+                                土壤侵蚀
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(6,'海岸侵蚀')">
+                                海岸侵蚀
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(3,'岩溶侵蚀')">
+                                岩溶侵蚀
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+            </th>
+
+
+
+
+            <td>
+
+                下载有关广西境内发生的地质灾害事件
+
+            </td>
+
+            <td>
+
+                <a id="EventTypeDownLoad" href="#" title="安装包">下载</a>
+
+            </td>
+
+        </tr>
+
+
+
+
+
+        <tr>
+            <td>
+
+                地址灾害事件下载
+
+            </td>
+            <th class="row">
+
+                <div class="dropdown">
+                    <a type="button" class="btn dropdown-toggle showEvent" id="dropdownMenu1"
+                       data-toggle="dropdown">
+                        选择
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation" class="dropdown-header">地质灾害事件类型</li>
+
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(0,'全部')">全部 </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(1,'地震')">
+                                地震
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(2,'泥石流')">泥石流</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(5,'胀缩土')">
+                                胀缩土
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(4,'土壤侵蚀')">
+                                土壤侵蚀
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(6,'海岸侵蚀')">
+                                海岸侵蚀
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(3,'岩溶侵蚀')">
+                                岩溶侵蚀
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+            </th>
+
+
+
+
+            <td>
+
+                下载有关广西境内发生的地质灾害事件
+
+            </td>
+
+            <td>
+
+                <a id="EventTypeDownLoad1" href="#" title="安装包">下载</a>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+
+                地址灾害事件下载
+
+            </td>
+            <th class="row">
+
+                <div class="dropdown">
+                    <a type="button" class="btn dropdown-toggle showEvent" id="dropdownMenu1"
+                       data-toggle="dropdown">
+                        选择
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation" class="dropdown-header">地质灾害事件类型</li>
+
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(0,'全部')">全部 </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(1,'地震')">
+                                地震
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(2,'泥石流')">泥石流</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(5,'胀缩土')">
+                                胀缩土
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(4,'土壤侵蚀')">
+                                土壤侵蚀
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(6,'海岸侵蚀')">
+                                海岸侵蚀
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" onclick="EventType(3,'岩溶侵蚀')">
+                                岩溶侵蚀
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+            </th>
+
+
+
+
+            <td>
+
+                下载有关广西境内发生的地质灾害事件
+
+            </td>
+
+            <td>
+
+                <a id="EventTypeDownLoad" href="#" title="安装包">下载</a>
+
+            </td>
+
+        </tr>*@
+
+            <tr>
+                <th class="row"><br /><br /></th>
+                <th class="row"></th>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th class="row"><br /><br /></th>
+                <th class="row"></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="row"><br /><br /></th>
+                <th class="row"></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="row"><br /><br /></th>
+                <th class="row"></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="row"><br /><br /></th>
+                <th class="row"></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="row"><br /><br /></th>
+                <th class="row"></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="row"><br /><br /></th>
+                <th class="row"></th>
+                <td></td>
+                <td></td>
+            </tr>
+            <!--
+
+    <tr>
+
+                        <th class="row">
+
+                            聚食汇<u><b><font color=red>MPOS</font></b></u>点餐 for Android(V6.0.1)
+
+                        </th>
+
+                        <td>
+
+                            2019-05-16
+
+                        </td>
+
+                        <td>
+
+                            适用7.2版本及以上
+
+                        </td>
+
+                        <td>
+
+                            安装包,适用7.2版本及以上
+
+                        </td>
+
+                        <td>
+
+                            <a href="https://hb2-rom-upgrade.oss-cn-beijing.aliyuncs.com/app/MPOS.6.0.1.apk" title="安装包">安装包</a>
+
+                        </td>
+
+                    </tr>
+
+    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="~/Content/sheetjs/xlsx.core.min.js"></script>
+<script src="~/Content/ceic/js/Data.js"></script>
+<script>
+    function EventType(i, k) {   //设置超链接
+
+        //alert(i);
+
+        var eonclick = 'JsonData(' + i + ');';  //alert(eonclick);
+        //alert(onclik);
+        var href = "Data?EventType=" + i;
+        $(document).ready(function () {
+            //$('#EventTypeDownLoad').attr('href', href);
+
+            // //设置js
+            ////$('#EventTypeDownLoad1').attr('onclick', onclick);
+            // document.getElementById("EventTypeDownLoad1").oclick = '3';
+
+
+            $("#dropdownMenu1").text(k); // 文字
+            // //alert(href);
+            $("#EventTypeDownLoad").attr("onclick", eonclick);
+        });
+    }
+
+
+
+
+    function EventTypeBuilding(i,k) {
+        {   //设置超链接
+
+            //alert(i);
+
+            var eonclick = 'JsonData(' + i + ');';  //alert(eonclick);
+            //alert(onclik);
+            var href = "DownLoad/Data?EventType=" + i;
+            $(document).ready(function () {
+                //$('#EventTypeDownLoad').attr('href', href);
+
+                // //设置js
+                ////$('#EventTypeDownLoad1').attr('onclick', onclick);
+                // document.getElementById("EventTypeDownLoad1").oclick = '3';
+
+
+                $("#dropdownMenu13").text(k); // 文字
+                // //alert(href);
+                $("#EventTypeBuildingDownLoad").attr("onclick", eonclick);
+            });
+        }
+    }
+
+
+
+    //设置图表
+    function Chart(i, k) {
+        {   //设置超链接
+
+            //alert(i);
+
+            //var eonclick = 'JsonData(' + i + ');';  //alert(eonclick);
+            //alert(onclik);
+            var href = "/DownLoad/ChaertDownLoad?id=" + i;
+     
+            $(document).ready(function () {
+                //$('#EventTypeDownLoad').attr('href', href);
+
+                // //设置js
+                ////$('#EventTypeDownLoad1').attr('onclick', onclick);
+                // document.getElementById("EventTypeDownLoad1").oclick = '3';
+
+
+                $("#dropdownMenu4").text(k); // 文字
+                // //alert(href);
+                $("#ChaertDownLoad").attr("href", href);
+                //document.getElementById("ChaertDownLoad").href = href;
+            });
+        }
+    }
+
+
+
+    //处理   获取Data 数据
+    function JsonData(i) {
+        
+       // alert(i + "");
+        $(function () {
+            //alert(data);
+            //异步发送数据
+            $.ajax({
+                type: 'get',
+
+                url: "Data?id=" + i,
+                dataType: "json",   //服务器响应的数据类型
+                success: function (data) {   //   success
+                   // alert(data);
+
+
+                    aoa =data;//获取返回数据 
+
+                    //操作
+                    ////console.log(aoa); //
+                    ////console.log(typeof (aoa)); //这时候是字符串
+                    aoa = JSON.parse(aoa);   //转化
+                    //console.log(typeof (aoa));
+                    //console.log(aoa);
+                    var EventType;
+
+                    for (var i = 0; i < aoa.length; i++) {
+
+                        //console.log(aoa[i].Type.TName); //提取出名称
+                        aoa[i].EventType = aoa[i].Type.TName;
+                        // 删除多于/
+
+                        delete aoa[i].Type;
+                        delete aoa[i].EId;
+                        delete aoa[i].TId;
+                        //aoa[i].EventType =
+                    }
+                    //去除Type属性
+                    //console.log(aoa);
+
+
+                    var sheet = XLSX.utils.json_to_sheet(aoa);
+                    /////  console.log(sheet);  //You need to parse it first with JSON.parse:
+                    var time = new Date();
+                    var NowTime = time.getFullYear() + "" + time.getMonth() + "" + time.getDate() + "" + time.getHours() + "" + time.getMinutes() + time.getSeconds();
+                    openDownloadDialog(sheet2blob(sheet), NowTime + '数据下载.xlsx'); 
+                }
+            })
+
+
+
+
+        });
+    }
+</script>

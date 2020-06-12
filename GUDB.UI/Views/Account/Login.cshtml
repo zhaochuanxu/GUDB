@@ -1,0 +1,99 @@
+﻿<!---使用这个model-->@model GUDB.Model.User
+
+@{
+    ViewBag.Title = "Login";
+
+
+}
+<h2>登录</h2>
+
+<script>
+
+    $(document).ready(function () {
+        $("form").submit(function (e) {
+
+            if ($("#name").val() == "" || $("#name").val() == null) {
+                alert("姓名不能空");
+
+                return false;
+            }
+            else {
+                if ($("#password").val() == "" || $("#password").val() == null) {
+                    alert("密码不能为空");
+
+                    return false;
+                }              
+                else {
+                    console.log($("#name").val() + "登录");
+
+                    //alert("用户"+$("#name").val()+"登录中………");
+                                //alert("Submitted……");
+                            };
+                        
+                    
+                
+            }          
+
+        });
+    });
+
+
+</script>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                <div class="form-group">
+                    @Html.Label("用户名", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.UName, new { @class = "form-control",@id="name" })
+
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    @Html.Label("密码", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.UPassword, new { @class = "form-control",@id="password" })
+                    </div>
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="登录" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+                <p>
+                    @Html.ActionLink("注册为新用户", "Register")
+                </p>
+                @* 在为密码重置功能启用了帐户确认后，启用此项
+                    <p>
+                        @Html.ActionLink("忘记了密码?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

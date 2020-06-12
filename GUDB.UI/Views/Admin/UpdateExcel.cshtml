@@ -1,0 +1,315 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@Styles.Render("~/bundles/Bootstarp/css")
+@Styles.Render("~/bundles/Bootstarp/css")
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateUser</title>
+</head>
+<body>
+    <br/>
+                     <div class="alert alert-success alert-dismissable">
+                         <button type="button" class="close" data-dismiss="alert"
+                                 aria-hidden="true">
+                             &times;
+                         </button>
+                         你正在导入 @ViewBag.Name 信息, 请注意<a href="#" class="alert-link">Excel表格规范</a>
+                 
+
+                     </div>
+
+    <input type="file" onchange="importf(this)" />
+    <div id="demo"></div>
+
+
+
+
+    <br />
+    <div id="submit"></div><!--展示提交按钮-->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Content/sheetjs/xlsx.core.min.js"></script>
+    <script>
+        /*
+        FileReader共有4种读取方法：
+        1.readAsArrayBuffer(file)：将文件读取为ArrayBuffer。
+        2.readAsBinaryString(file)：将文件读取为二进制字符串
+        3.readAsDataURL(file)：将文件读取为Data URL
+        4.readAsText(file, [encoding])：将文件读取为文本，encoding缺省值为'UTF-8'
+                     */
+
+
+        var wb;//读取完成的数据
+        var rABS = false; //是否将文件读取为二进制字符串
+
+        function importf(obj) {//导入
+            if (!obj.files) {
+                alert('文件格式错误');
+                return;
+            }
+
+            ///  文件信息
+            var f = obj.files[0];
+            //console.log(f);
+
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var data = e.target.result;
+
+                if (rABS) {  //如果不是二进制
+                    wb = XLSX.read(btoa(fixdata(data)), {//手动转化
+                        type: 'base64'
+                    });
+                }
+
+                else {         //   如果是二进制
+                    wb = XLSX.read(data, {
+                        type: 'binary'
+                    });
+                }
+
+                //console.log(wb); 信息
+
+
+
+
+
+                //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
+                //wb.Sheets[Sheet名]获取第一个Sheet的数据
+                document.getElementById("demo").innerHTML = "导入的数据"+"\n<br/>"+JSON.stringify(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+                console.log(JSON.stringify(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]])));
+
+
+
+                //展示表格
+                $(function () {
+
+                    $inputtype = @ViewData["type"];
+                    //alert($inputtype);
+                $html = ' <form id="frm" action="" method="post" class="inquiry-form" target="_blank"><div class="group">' +
+                    ' <a href="javascript:void(0)" class="check" style="display: inline-block;margin-left: 150px" onclick="Update(' +
+                    $inputtype +
+                    ' )" >提交</a></div >'
+                    +'</form>';
+                    $("#submit").html($html)  //填充
+                });
+
+
+            };
+
+
+            if (rABS) {
+                reader.readAsArrayBuffer(f);
+            } else {
+                reader.readAsBinaryString(f);
+            }
+
+            /*console.log(reader.readAsBinaryString(f));*/
+        }
+
+
+
+        /**
+         * z二进制流转化/
+         *
+         */
+        function fixdata(data) { //文件流转BinaryString
+            var o = "",
+                l = 0,
+                w = 10240;
+            for (; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
+            o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
+            return o;
+        }
+
+
+
+        ///传递参数type 代表不同的
+        function Update(type) {
+
+            //alert(type);   //查看类型
+            //欲提交的数据
+            var UpdateData = JSON.stringify(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+
+
+            //// 获取表单数据 初始序列化
+            //  var data = encodeURI(jQuery("#frm").serialize());
+
+            //alert(UpdateData);
+            //异步发送数据
+
+
+
+
+            //对数据集进行检查是否符合原
+
+             //alert(typeof (UpdateData));
+            CheckData = JSON.parse(UpdateData);
+            // console.log(CheckData, typeof (CeckData));
+
+
+            //针对不同的type传到不同的js解析器   且监测数据
+            switch (type)
+             {
+                case 0:
+                    for (var i = 0; i < CheckData.length; i++)
+                    {
+                        //console.log(CheckData[i].UId);
+                        if (CheckData[i].UId == "" || CheckData[i].UId == null )
+                        {
+                            alert("提交失败！Excel表格中存在UId为空");
+                            return
+                        };
+                    };
+                    $url = "UpdateUserData";
+                    break;//User
+
+
+                case 1:
+
+                    for (var i = 0; i < CheckData.length; i++) {
+                        //console.log(CheckData[i].UId);
+                        if (CheckData[i].IId == "" || CheckData[i].UId == null) {
+                            alert("提交失败！Excel表格中存在IId(身份证号)为空");
+                            return
+                        };
+                        if (CheckData[i].UId == "" || CheckData[i].UId == null) {
+                            alert("提交失败 ！Excel表格中存在UId(单位编号)为空");
+                            return
+                        };
+                    };
+                    $url = "UpdateInvestigatorData";
+                    break; //investigator
+
+                case 2:
+
+                    for (var i = 0; i < CheckData.length; i++) {
+                        //console.log(CheckData[i].UId);
+                        if (CheckData[i].EId == "" || CheckData[i].EId == null) {
+                            alert("提交失败！Excel表格中存在EId(事件编号)为空");
+                            return
+                        };
+                        if (CheckData[i].TId == "" || CheckData[i].TId == null) {
+                            alert(" 提交失败！Excel表格中存在TId (事件类型)为空");
+                            return
+                        };
+                    };
+                    $url = "UpdateEventData"; break; //Event
+                case 3:
+                    for (var i = 0; i < CheckData.length; i++) {
+                        //console.log(CheckData[i].UId);
+                        if (CheckData[i].UId == "" || CheckData[i].UId == null) {
+                            alert("提交失败！  Excel表格中存在UId(单位编号)为空");
+                            return
+                        };
+                    };
+
+                    $url = "UpdateUnitData"; break; //Unit
+                default:
+
+
+
+                    $url = "UpdateExcel"; break;
+            }
+
+
+           // alert($url);  查看url
+
+
+
+
+
+
+            alert("提交成功");
+
+
+
+
+            $.ajax({
+                type: 'POST',   //方式
+                url: $url, //地址
+                data: UpdateData,
+                dataType: "json",   //服务器响应的数据类型
+                success: function (data) {  //传递过来的JSon
+                    data= JSON.parse(data);
+                    //console.log(data);
+                    //alert(data);
+                    alert("批量导入成功");
+                    //alert(data.length);
+                    var num =0;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].If == 0) { num ++;}
+                    };
+                    //if (data)
+                    //else {
+
+                    //}
+                    alert(num+"条数据不通过,因为ID已经存在");
+                }
+                //al_data = data;//   全局变量复制
+                //处理json数据
+                //console.log(data);
+                //$datajson = $.parsejson(data);
+
+                //如果是一个数据 alert($datajson["cityid"]);
+                //alert($datajson["end"]);
+                //获取数据个数
+                //$datanum = data.length;  jsonjson字符串的个数
+
+                //获取数据个数
+
+
+                //$dataNum = $dataJson.length;
+                //alert("个数为" + $dataNum);
+
+
+
+
+                ////$html = ' <form id="frm" action="" method="post" class="inquiry-form" target="_blank"><div class="group">' +
+                ////    ' <a href="javascript:void(0)" class="check" style="display: inline-block;margin-left: 150px" onclick="Update()" >提交</a>
+                ////    + '</div >';
+                ////  $html = ' <form id="frm" action="" method="post" class="inquiry-form" target="_blank"><div class="group">' +
+                ////    ' <a href="javascript:void(0)" class="check" style="display: inline-block;margin-left: 150px" onclick="Update()" >提交</a>
+                ////    + '</div >';
+
+                ////                将数据填充到表
+
+                ////                $j = 0;
+                ////            for ($i = 0; $i < $dataNum; $i++) $j++,
+                ////                $j % 2 == 0 ? $dataJson[$i].Elevel >= 6 ? $html += '<tr class="tr-red" style="background-color: #eeeeee;">' : $dataJson[$i].Elevel >= 4 ? $html += '<tr style="background-color: #eeeeee;font-weight: bold;">' : $html += '<tr style="background-color: #eeeeee;">' : $dataJson[$i].CityId >= 6 ? $html += '<tr class="tr-red">' : $dataJson[$i].CityId ? $html += '<tr style="font-weight: bold;">' : $html += "<tr>",
+
+
+                ////                $html += '<td align="center" style="padding-left: 20px">' + $dataJson[$i].Elevel + '</td><td align="center">' + $dataJson[$i].ETime + '</td><td align="center">' + $dataJson[$i].ELat + '</td><td align="center">' + $dataJson[$i].ELong + "</td>",
+
+
+                ////                $html += '<td align="center">' + $dataJson[$i].Elevel + '</td><td align="left"><a href="/Map/Detail?location=' + $dataJson[$i].ELocation + '&&type='+$dataJson[$i].TId+'&&date=' + $dataJson[$i].ETime + '" ' + ' target="_blank"' + '>' + $dataJson[$i].ELocation + "</a></td></tr>";
+                ////                $html += "</table>",
+
+
+
+
+                ////            填充table
+                ////                $("#speedquery").html($html)
+
+                ////            $("#pagenum").text("当前查询条数:  " + $dataNum);
+
+                ////        },
+                ////        error: function () {
+                ////            alert("服务器繁忙请稍后");
+                ////        }
+
+                ////    })
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
